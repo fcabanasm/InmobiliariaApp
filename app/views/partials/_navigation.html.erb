@@ -1,0 +1,27 @@
+<header>
+	<nav>
+		<ul class="nav nav-tabs">
+			<li>
+				<%=link_to "Inicio", root_path%>
+			</li>
+			<li>
+				<%=link_to "Departamentos", apartments_path%>
+			</li>
+			<% if user_signed_in? %>
+				<li>
+					<%= link_to "Editar Perfil", edit_user_registration_path(current_user) %>
+				</li>
+				<li>
+					<%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %>
+				</li>
+			<%else%>
+				<li>
+					<%= link_to "Ingresar", new_user_session_path %>
+				</li>
+				<li>
+					<%= link_to "Registrarse", new_user_registration_path %>
+				</li>
+			<%end%>
+		</ul>
+	</nav>
+</header>
