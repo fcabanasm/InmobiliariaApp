@@ -1,5 +1,6 @@
 class ApartmentsController < ApplicationController
-  before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
   before_action :authenticate_user!, except: [:show, :index]
   # GET /apartments
   # GET /apartments.json
@@ -19,6 +20,8 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments/1/edit
   def edit
+    @apartment = Apartment.find(params[:id])
+    
   end
 
   # POST /apartments
@@ -63,9 +66,7 @@ class ApartmentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_apartment
-      @apartment = Apartment.find(params[:id])
-    end
+   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
