@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151109184127) do
     t.string   "phone_number",           limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "permission_level",       limit: 4
     t.boolean  "admin"
   end
 
