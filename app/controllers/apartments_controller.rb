@@ -1,6 +1,5 @@
 class ApartmentsController < ApplicationController
   load_and_authorize_resource
-
   before_action :authenticate_user!, except: [:show, :index]
   # GET /apartments
   # GET /apartments.json

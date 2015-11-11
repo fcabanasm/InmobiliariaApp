@@ -2,18 +2,26 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    user ||= User.new # guest user (not logged in)
     if user.admin?
         can :manage, :all
-    else
+    end
+    if user.owner?
         can :update, Apartment do |apartment|
             apartment.user == user
-        end
-
+            end
+        can :destroy, Apartment do |apartment|
+            apartment.user == user
+            end
         can :create, Apartment
         can :index, Apartment
         can :show, Apartment
+        
+    else
+        can :index, Apartment
+        can :show, Apartment
     end
+    
 
     # Define abilities for the passed in user here. For example:
     #

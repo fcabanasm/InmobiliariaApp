@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20151109184127) do
     t.string   "phone_number",           limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.integer  "permission_level",       limit: 4
     t.boolean  "admin"
+    t.boolean  "owner"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
