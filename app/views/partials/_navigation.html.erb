@@ -11,7 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li ><%=link_to "Arriendos", apartments_path%></li>
 
         <% if user_signed_in? %>
@@ -55,3 +55,11 @@
     </div>
   </div>
   </nav>
+<header>
+  <div class="col-md-12">
+  <div id="fondo">
+      <%= image_tag "laserena.jpg", class:"img-responsive"%>
+  </div>  
+</div>
+</header>
+  
