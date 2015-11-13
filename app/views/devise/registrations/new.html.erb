@@ -1,36 +1,41 @@
-<div class="col-md-3 center-block no-float">
-  <h2><span class="fa fa-star"></span> Registrarse</h2>
+<div class="padingup">
+    <div class="container well" id="sha">
+        <div class="col-md-9 center-block no-float">
+            <h2><span class="fa fa-star"></span> Registrarse</h2>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+                    <div class="form-group login">
+                      <%= f.label :email, 'Email'%><br />
+                      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                    </div>
 
-    <div class="form-group">
-      <%= f.label :email, 'Email'%><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
+                <div class="form-group login">
+                  <%= f.label :name, 'Nombre' %><br />
+                  <%= f.text_field :name, class: "form-control" %>
+                </div>
 
-    <div class="form-group">
-      <%= f.label :name, 'Nombre' %><br />
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
+                <div class="form-group login">
+                  <%= f.label :password, 'Contraseña' %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> caracteres minimo)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                </div>
 
-    <div class="form-group">
-      <%= f.label :password, 'Contraseña' %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> caracteres minimo)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
+                <div class="form-group login">
+                  <%= f.label :password_confirmation, 'Confirmar Contraseña' %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation, 'Confirmar Contraseña' %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    </div>
+                <div class="actions">
+                  <%= f.submit "Registrarse", class: "btn btn-info"%>
+                </div>
+              <% end %>
 
-    <div class="actions">
-      <%= f.submit "Registrarse", class: "btn btn-info" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+              <%= render "devise/shared/links" %>
+      </div>
 </div>
+</div>
+
+

@@ -7,7 +7,7 @@
   filter: blur(5px);
   width: auto;
   height: auto;
-  margin: 0px;
+  
  }
 
 #custom.navbar-default .navbar-brand {
@@ -46,4 +46,22 @@
 #custom.navbar-default .navbar-toggle:hover .icon-bar,
 #custom.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #df691a;
+}
+#sha{
+    max-width: 500px;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    -moz-box-shadow:    0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    border-radius: 6%;
+  }
+
+  .login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+ 
+}
+
+.padingup{
+    padding: 80px !important;
 }
