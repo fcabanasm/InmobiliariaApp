@@ -3,10 +3,15 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.admin?
+    can :read, :all
+    #can :index, Apartment
+    #can :show, Apartment
+    if user && user.admin?
         can :manage, :all
+        can :access, :rails_admin   # grant access to rails_admin
+        can :dashboard              # grant access to the dashboard
     end
-    if user.owner?
+    if user && user.owner?
         can :update, Apartment do |apartment|
             apartment.user == user
             end
@@ -14,12 +19,8 @@ class Ability
             apartment.user == user
             end
         can :create, Apartment
-        can :index, Apartment
-        can :show, Apartment
-        
-    else
-        can :index, Apartment
-        can :show, Apartment
+        #can :index, Apartment
+        #can :show, Apartment
     end
     
 
