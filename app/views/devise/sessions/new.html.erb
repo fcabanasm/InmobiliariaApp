@@ -1,5 +1,4 @@
-<div class="padingup">
-    <div class="container well" id="sha">
+<div class="container well formborder">
         <div class="col-md-9 center-block no-float">
             <h2><span class="glyphicon glyphicon-user"></span>Iniciar sesión</h2>
               <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: {role: "form"}) do |f| %>
@@ -27,8 +26,3 @@
             <%= render "devise/shared/links" %>
         </div>
     </div>
-</div>
-  
-
-
-

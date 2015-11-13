@@ -18,5 +18,10 @@ class ApplicationController < ActionController::Base
 #				params.require(resource_name).permit(:email,:password,:password_confirmation,:name)
 #		end
 #	end
+
+rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
 end
 

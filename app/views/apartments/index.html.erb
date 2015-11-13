@@ -1,5 +1,4 @@
-<div class="padingup">
-    <div class="container">
+<div class="col-md-12">
         <p id="notice"><%= notice %></p>
 
 <h1>Listing Apartments</h1>
@@ -46,7 +45,4 @@
 <%if can? :create, Apartment %>
   <%= link_to 'New Apartment', new_apartment_path %>
 <%end%>
-      
-    </div>
-  
 </div>
