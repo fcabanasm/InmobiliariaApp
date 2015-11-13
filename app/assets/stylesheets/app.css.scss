@@ -9,3 +9,41 @@
   height: auto;
   margin: 0px;
  }
+
+#custom.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+}
+#custom.navbar-default {
+    font-size: 18px;
+    background-color: rgba(223, 105, 26, 1);
+    border-bottom-width: 0px;
+}
+#custom.navbar-default .navbar-nav>li>a {
+    color: rgba(224, 224, 224, 1);
+    background-color: rgba(223, 105, 26, 1);
+}
+#custom.navbar-default .navbar-nav>li>a:hover,
+#custom.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(204, 97, 20, 1);
+}
+#custom.navbar-default .navbar-nav>.active>a,
+#custom.navbar-default .navbar-nav>.active>a:hover,
+#custom.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(204, 97, 20, 1);
+}
+#custom.navbar-default .navbar-toggle {
+    border-color: #cc6114;
+}
+#custom.navbar-default .navbar-toggle:hover,
+#custom.navbar-default .navbar-toggle:focus {
+    background-color: #cc6114;
+}
+#custom.navbar-default .navbar-toggle .icon-bar {
+    background-color: #cc6114;
+}
+#custom.navbar-default .navbar-toggle:hover .icon-bar,
+#custom.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #df691a;
+}

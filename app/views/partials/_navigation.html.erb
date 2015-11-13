@@ -1,4 +1,5 @@
-<nav class="navbar navbar-inverse">
+<header>
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -7,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"><%=link_to "La Serena Fun", root_path%></a>
+      <%= link_to "La Serena Fun", root_path, :class => "navbar-brand" %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -46,20 +47,44 @@
                 <%= link_to "Contacto"%>
             </li>
       </ul>
+     <!--
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Buscar en esta página">
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
-      </form>
+      </form>-->
+     
     </div>
   </div>
   </nav>
-<header>
-  <div class="col-md-12">
-  <div id="fondo">
-      <%= image_tag "laserena.jpg", class:"img-responsive"%>
-  </div>  
+
+<div id="custom" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#">La Serena Fun</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a>
+                </li>
+                <li><a href="/products">Products</a>
+                </li>
+                <li><a href="/about-us">About Us</a>
+                </li>
+                <li><a href="/contact">Contact Us</a>
+                </li>
+                <li class="dropdown"><a href="lko" class="dropdown-toggle" data-toggle="dropdown" target="_blank">Desplegable <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="2">asd</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+
 </header>
   

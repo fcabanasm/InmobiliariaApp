@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Añadidos:
-gem "bootstrap-sass", "~> 3.0.2.1"
+gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem "devise"
 gem 'cancancan', '~> 1.10'
