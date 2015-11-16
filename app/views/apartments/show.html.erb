@@ -6,10 +6,18 @@
           <%= @apartment.title %>
         </p>
 
+<div class="row">
+    <% unless @apartment.pictures.empty? %>
+      <% @apartment.pictures.each do |pic| %>
+        <li id="picture_<%= pic.id %>">
+          <div class="thumbnail">
+            <%= image_tag pic.image.url %>
+      <% end %>
+    <% end %>
+        </li>
+          </div>
+</div>
 
-
-        
-        
         <p>
           <strong>Description:</strong>
           <%= @apartment.description %>
