@@ -15,6 +15,22 @@
         <%= f.text_field :name, class: "form-control" %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :phone_number, 'Telefono' %><br />
+        <%= f.text_field :phone_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :rut, 'RUT' %><br />
+        <%= f.text_field :rut, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address, 'Dirección' %><br />
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>

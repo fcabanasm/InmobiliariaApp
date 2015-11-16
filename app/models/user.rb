@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   			too_short:"Revisa el nombre ingresado, parece demasiado corto", 
   			too_long:"Revisa el nombre ingresado, parece demasiado largo"}
   			#,format: {with: /([]+)/, message: "El nombre solo puede contener letras"}
+
+        
 end
