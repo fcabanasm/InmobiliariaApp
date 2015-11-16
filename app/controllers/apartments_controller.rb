@@ -15,12 +15,13 @@ class ApartmentsController < ApplicationController
   # GET /apartments/new
   def new
     @apartment = Apartment.new
+    3.times {@apartment.pictures.build} # added this
   end
 
   # GET /apartments/1/edit
   def edit
     @apartment = Apartment.find(params[:id])
-    
+    3.times { @apartment.pictures.build } # ... and this
   end
 
   # POST /apartments
@@ -30,6 +31,12 @@ class ApartmentsController < ApplicationController
 
     respond_to do |format|
       if @apartment.save
+        if params[:images]
+          # The magic is here ;)
+          params[:images].each { |image|
+            @apartment.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
         format.json { render :show, status: :created, location: @apartment }
       else
@@ -69,6 +76,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:cod_apartment, :title, :description, :user_id, :is_rented, :rooms, :bathrooms, :price)
+      params.require(:apartment).permit(:cod_apartment, :title, :description, :user_id, :is_rented, :rooms, :bathrooms, :price,:pictures)
     end
 end

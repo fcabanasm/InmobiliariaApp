@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109184127) do
+ActiveRecord::Schema.define(version: 20151115143528) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -27,15 +27,21 @@ ActiveRecord::Schema.define(version: 20151109184127) do
 
   add_index "apartments", ["user_id"], name: "index_apartments_on_user_id", using: :btree
 
-  create_table "attachments", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "extension",    limit: 255
-    t.integer  "apartment_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "pictures", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.string   "description",        limit: 255
+    t.string   "image",              limit: 255
+    t.integer  "cover",              limit: 4
+    t.integer  "apartment_id",       limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
-  add_index "attachments", ["apartment_id"], name: "index_attachments_on_apartment_id", using: :btree
+  add_index "pictures", ["apartment_id"], name: "index_pictures_on_apartment_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -62,5 +68,5 @@ ActiveRecord::Schema.define(version: 20151109184127) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "apartments", "users"
-  add_foreign_key "attachments", "apartments"
+  add_foreign_key "pictures", "apartments"
 end

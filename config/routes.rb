@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  resources :pictures
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :attachments
   resources :apartments
   devise_for :users, controllers:{registrations: "registrations"}
   get 'welcome/index'
