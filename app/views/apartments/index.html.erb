@@ -45,4 +45,8 @@
 <%if can? :create, Apartment %>
   <%= link_to 'New Apartment', new_apartment_path %>
 <%end%>
+
+<br>
+<%= will_paginate @apartments %>
+
 </div>
