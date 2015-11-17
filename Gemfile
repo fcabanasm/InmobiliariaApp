@@ -30,7 +30,7 @@ gem "devise"
 gem 'cancancan', '~> 1.10'
 gem "rails_admin"
 gem "paperclip"
-gem "will_paginate"
+gem 'will_paginate','~> 3.0.pre2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

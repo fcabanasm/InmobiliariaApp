@@ -27,16 +27,6 @@ ActiveRecord::Schema.define(version: 20151115143528) do
 
   add_index "apartments", ["user_id"], name: "index_apartments_on_user_id", using: :btree
 
-  create_table "attachments", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "extension",    limit: 255
-    t.integer  "apartment_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "attachments", ["apartment_id"], name: "index_attachments_on_apartment_id", using: :btree
-
   create_table "pictures", force: :cascade do |t|
     t.string   "title",              limit: 255
     t.string   "description",        limit: 255
@@ -78,6 +68,5 @@ ActiveRecord::Schema.define(version: 20151115143528) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "apartments", "users"
-  add_foreign_key "attachments", "apartments"
   add_foreign_key "pictures", "apartments"
 end
