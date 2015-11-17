@@ -1,52 +1,14 @@
-<div class="col-md-12">
-        <p id="notice"><%= notice %></p>
-
-<h1>Listing Apartments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Cod apartment</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th>Is rented</th>
-      <th>Rooms</th>
-      <th>Bathrooms</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @apartments.each do |apartment| %>
-      <tr>
-        <td><%= apartment.title %></td>
-        <td><%= apartment.description %></td>
-        <td><%= apartment.user %></td>
-        <td><%= apartment.is_rented %></td>
-        <td><%= apartment.rooms %></td>
-        <td><%= apartment.bathrooms %></td>
-        <td><%= apartment.price %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <%if can? :update, apartment %>
-          <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <%end%>
-        <%if can? :destroy, apartment %>
-          <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%if can? :create, Apartment %>
-  <%= link_to 'New Apartment', new_apartment_path %>
-<%end%>
-
-<br>
-<%= will_paginate @apartments %>
-
+<div class="container" style="margin:0 auto;">
+    <h1>Propiedades</h1>
+        <div class="row">
+            <%= render @apartments %>
+        </div>
+        <div class="col-md field top-space">
+            <%if can? :create, Apartment %>
+                <%= link_to "Nuevo Articulo", new_apartment_path,class:" button "%>
+            <%end%>
+            <div class="top-space text-center">
+                <%= will_paginate @apartments %>
+            </div>
+        </div>
 </div>

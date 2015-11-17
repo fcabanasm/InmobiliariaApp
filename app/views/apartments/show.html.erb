@@ -1,57 +1,71 @@
+<article class="container">
+<h1 class="be-big blue top-space"> <%= @apartment.title  %> <%if can? :update, @apartment %>
+  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "btn btn-info" %> 
+<%end%></h1>
+
+
 <div class="col-md-12">
-          <p id="notice"><%= notice %></p>
-
-        <p>
-          <strong>Title:</strong>
-          <%= @apartment.title %>
-        </p>
-
-<div class="row">
-    <% unless @apartment.pictures.empty? %>
-      <% @apartment.pictures.each do |pic| %>
-        <li id="picture_<%= pic.id %>">
-          <div class="thumbnail">
-            <%= image_tag pic.image.url %>
-      <% end %>
-    <% end %>
-        </li>
+  <div class="col-md-7">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Carousel indicators -->
+          <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+          </ol>   
+          <!-- Wrapper for carousel items -->
+          <div class="carousel-inner">
+            <% unless @apartment.pictures.empty? %>
+                <% @apartment.pictures.each do |pic| %>
+                  <%if pic == @apartment.pictures.first%>
+                    <div class="active item">
+                      <%= image_tag pic.image.url %>
+                    </div>
+                  <%else%>
+                    <div class="item">
+                      <%= image_tag pic.image.url %>
+                    </div>
+                  <% end %>
+                <% end %>
+            <% end %>
           </div>
+          <!-- Carousel controls -->
+          <a id="carousel-arrows"class="carousel-control left" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a id="carousel-arrows" class="carousel-control right" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+  </div>
+<div class="col-md-5">
+  <div class="row center-xs top-space">
+    <div class="col-xs-12 ligth-border col-md-7 top-space">
+    <div class="col-md-12">
+      <h2>Caracteristicas Básicas:</h2>
+    </div>
+           <div class="col-md-12">
+             <i class="fa fa-bed fa-2x">Pieza(s): <%=@apartment.rooms%> </i>
+           </div>
+           <div class="col-md-12">
+            <i class="fa fa-filter fa-2x">Baño(s): <%=@apartment.bathrooms%></i>
+           </div>
+           <div class="col-md-12">
+            <i class="fa fa-money fa-2x">Precio: <%=@apartment.price%></i>
+           </div>
+
+    </div>
+  </div>
+</div>
 </div>
 
-        <p>
-          <strong>Description:</strong>
-          <%= @apartment.description %>
-        </p>
-
-        <p>
-          <strong>User:</strong>
-          <%= @apartment.user %>
-        </p>
-
-        <p>
-          <strong>Is rented:</strong>
-          <%= @apartment.is_rented %>
-        </p>
-
-        <p>
-          <strong>Rooms:</strong>
-          <%= @apartment.rooms %>
-        </p>
-
-        <p>
-          <strong>Bathrooms:</strong>
-          <%= @apartment.bathrooms %>
-        </p>
-
-        <p>
-          <strong>Price:</strong>
-          <%= @apartment.price %>
-        </p>
-
-        <%if can? :update, @apartment %>
-          <%= link_to 'Edit', edit_apartment_path(@apartment) %> 
-        <%end%>
-
-        <%= link_to 'Back', apartments_path %>
-
+<div class="col-md-12">
+  <h3>Descripción:</h3>
+  <%= @apartment.description%>
 </div>
+
+</article>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><span class="pull-right"><%= link_to "", apartments_path, class:"fa fa-arrow-circle-left fa-4x"%></span></div>
+    </div>
+</div>   
