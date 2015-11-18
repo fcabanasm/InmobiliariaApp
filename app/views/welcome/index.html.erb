@@ -3,3 +3,29 @@
       <%= image_tag "laserena.jpg", class:"img-responsive"%>
   	</div>  
 </div>
+
+<div class="container">
+	<div class="row">
+		<%Apartment.all.each do |z|%>
+		<%=link_to z do%>
+	    	<div class="col-xs-4">
+	    	<div class="box relative apartment-height">
+	    	<%unless z.pictures.empty?%>
+	    	<div class="absolute apartment-height background-cover rounded" style="background:url(<%=z.pictures.first.image.url%>);top:0px;left:0px;width:100%;">
+        	</div>
+        	<%end%>
+        	<div class="absolute apartment-height background-cover rounded"
+             style="background:rgba(0,0,0,0.3);top:0px;left:0px;width:100%;">
+        	</div>
+				<div class="relative white text-center">
+          		<h4> <%=z.title %> </h4>
+        		</div>
+			</div>
+			</div>
+		<%end%>
+		<%end%>
+	</div>
+</div>
+
+
+

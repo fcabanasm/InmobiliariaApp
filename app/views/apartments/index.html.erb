@@ -5,7 +5,7 @@
         </div>
         <div class="col-md field top-space">
             <%if can? :create, Apartment %>
-                <%= link_to "Nuevo Articulo", new_apartment_path,class:" button "%>
+                <%= link_to "Publicar uno nuevo", new_apartment_path,class:" button "%>
             <%end%>
             <div class="top-space text-center">
                 <%= will_paginate @apartments %>
