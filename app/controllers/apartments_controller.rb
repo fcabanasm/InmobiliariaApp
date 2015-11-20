@@ -70,6 +70,16 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def publish
+    @apartment.publish!
+    redirect_to :back
+  end
+
+  def unpublish
+    @apartment.unpublish!
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
    

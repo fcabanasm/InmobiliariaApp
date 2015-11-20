@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <%Apartment.all.ultimos.each do |z|%>
+        <%=link_to z do%>
+            <div class="col-xs-4">
+            <div class="box relative apartment-height">
+            <%unless z.pictures.empty?%>
+            <div class="absolute apartment-height background-cover rounded" style="background:url(<%=z.pictures.first.image.url%>);top:0px;left:0px;width:100%;">
+            </div>
+            <%end%>
+            <div class="absolute apartment-height background-cover rounded"
+             style="background:rgba(0,0,0,0.3);top:0px;left:0px;width:100%;">
+            </div>
+                <div class="relative white text-center">
+                <h4> <%=z.title %> </h4>
+                </div>
+            </div>
+            <div class="top-space text-center margin-sup">
+                <% if z.may_publish? %>
+                <%= link_to "Publicar", "/apartments/#{z.id}/publish", class:"btn btn-success", method: :put%>
+                <%end%>
+                <% if z.may_unpublish? %>
+                <%= link_to "Desactivar", "/apartments/#{z.id}/unpublish", class:"btn btn-danger", method: :put%>
+                <%end%>
+            </div>
+            </div>
+            
+        <%end%>
+        <%end%>
+
+        
+    </div>
+</div>

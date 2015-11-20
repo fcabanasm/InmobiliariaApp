@@ -19,6 +19,7 @@ class Ability
             apartment.user == user
             end
         can :create, Apartment
+
         #can :index, Apartment
         #can :show, Apartment
     end
