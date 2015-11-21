@@ -23,5 +23,15 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_path, :alert => exception.message
   end
 
+  protected
+
+  def authenticate_owner!
+    redirect_to root_path unless user_signed_in? && current_user.owner?
+  end
+
+  def authenticate_admin!
+    redirect_to root_path unless user_signed_in? && current_user.admin?
+  end
+
 end
 

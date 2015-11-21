@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   get 'contact/index'
-
+  
   resources :pictures
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :apartments
   devise_for :users, controllers:{registrations: "registrations"}
-  get 'welcome/index'
+  resources :users, only: [:show, :index]
 
+  #get 'welcome/index'
 
   get "/dashboard", to: "welcome#dashboard"
 

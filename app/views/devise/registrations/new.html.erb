@@ -15,6 +15,11 @@
                 </div>
 
                 <div class="form-group login">
+                  <%= f.label :address, 'Dirección' %><br />
+                  <%= f.text_field :address, class: "form-control" %>
+                </div>
+
+                <div class="form-group login">
                   <%= f.label :password, 'Contraseña' %>
                   <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %> caracteres minimo)</em>

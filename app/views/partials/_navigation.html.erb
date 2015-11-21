@@ -23,14 +23,15 @@
                 <%= link_to "Registrarse", new_user_registration_path %>
             </li>
         <%end%>
-            <li ><%=link_to "Arriendos", apartments_path%></li>
-            <li ><a href="/contact/index">Contacto</a></li>
+            <li><%=link_to "Arriendos", apartments_path%></li>
+            <li><a href="/contact/index">Contacto</a></li>
             <% if can? :access, :rails_admin %>
-              <li class="col-md">
-                <%= link_to "Administrar Articulos", dashboard_path %>
-              </li>
+            <li><%= link_to "Administrar Articulos", dashboard_path %>
+            </li>
               <%end%>
-
+            <% if can? :access, :rails_admin %>
+                <li><%= link_to 'Usuarios', users_path %></li>
+            <% end %>
             <% if can? :access, :rails_admin %>
                 <li><%= link_to 'Admin', rails_admin_path %></li>
             <% end %>
