@@ -1,3 +1,4 @@
+
 <div class="container" style="margin:0 auto;">
     <h1>Propiedades</h1>
         <div class="row">
@@ -8,7 +9,7 @@
                 <%= link_to "Publicar uno nuevo", new_apartment_path,class:" button "%>
             <%end%>
             <div class="top-space text-center">
-                <%= will_paginate @apartments%>
+                <%= will_paginate @apartments, renderer: BootstrapPagination::Rails %>
             </div>
         </div>
 </div>

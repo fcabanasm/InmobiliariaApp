@@ -30,7 +30,7 @@ gem "devise"
 gem 'cancancan', '~> 1.10'
 gem "rails_admin"
 gem "paperclip"
-gem 'will_paginate','~> 3.0.pre2'
+gem 'will_paginate-bootstrap'
 gem "aasm"
 gem 'gmaps4rails'
 gem 'geocoder'
