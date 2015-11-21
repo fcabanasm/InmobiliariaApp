@@ -1,6 +1,10 @@
 <article class="container">
-<h1 class="be-big blue top-space"> <%= @apartment.title  %> <%if can? :update, @apartment %>
-  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "btn btn-info" %> 
+<h1 class="be-big blue top-space"> <%= @apartment.title  %> 
+  <%if can? :update, @apartment %>
+  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "btn btn-info" %>
+  <%end%>
+  <%if can? :destroy, @apartment %>
+  <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
 <%end%></h1>
 
 

@@ -2,7 +2,6 @@
 .no-float{
 	float:none;
 }
-
 #fondo{
   filter: blur(5px);
   width: auto;
@@ -59,6 +58,9 @@
 .btn-info{
   background-color: #DF691A;
   border-color: #DF691A;
+}
+.white{
+  color: white !important
 }
 .carousel{
     background: #2f4357;
