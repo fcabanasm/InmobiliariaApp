@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div class="row">
-		<%Apartment.publicados.ultimos.each do |z|%>
+		<%Apartment.publicados.ultimos.limit(6).each do |z|%>
 		<%=link_to z do%>
 	    	<div class="col-xs-4">
 	    	<div class="box relative apartment-height">
@@ -26,6 +26,3 @@
 		<%end%>
 	</div>
 </div>
-
-
-
