@@ -5,11 +5,19 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     @apartments = Apartment.paginate(page:params[:page], per_page:6).publicados.ultimos
+    @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+    end
   end
 
   # GET /apartments/1
   # GET /apartments/1.json
   def show
+    @hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+    end
   end
 
   # GET /apartments/new
@@ -86,6 +94,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:cod_apartment, :title, :description, :user_id, :is_rented, :rooms, :bathrooms, :price,:pictures)
+      params.require(:apartment).permit(:cod_apartment, :title, :description,:address, :user_id, :is_rented, :rooms, :bathrooms, :price,:pictures)
     end
 end
