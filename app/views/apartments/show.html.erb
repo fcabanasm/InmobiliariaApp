@@ -82,6 +82,9 @@
 <div class="container">
 <div class="row">
 <div class="col-md-12">
+<h3>Dirección:</h3>
+<%=@apartment.address%>
+<!--<%=raw @hash.to_json %> -->
   <div style='width: 1140px;'>
     <div id="map" style='width: 1140; height: 500px;'></div>
   </div>
@@ -92,9 +95,24 @@
       markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(15);
+      handler.getMap().setZoom(13);
     });
   </script>
-</div>  
+</div> 
+<!--¿Cuantos departamentos hay en el radio de 10 km?-->
+<%contador=0%>
+<% for @apartment in @apartment.nearbys(10) %>
+  <% contador += 1; %>
+<% end %>
+  <%if contador>0%>
+    <h3>Otras propiedades cerca de esta: </h3>
+  <ul>
+    <% for apartment in @apartment.nearbys(10).publicados %>
+        <li><%=link_to apartment.address, apartment%> (<%=apartment.distance.round(2)%> kilometros)</li>
+    <%end%>
+  <%else%>
+    <h3>No hay otras propiedades cerca de esta (10km)</h3>
+  <%end%>
+</ul> 
 </div>
 </div>

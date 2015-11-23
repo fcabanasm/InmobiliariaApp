@@ -7,8 +7,9 @@ class Apartment < ActiveRecord::Base
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
   	
   	geocoded_by :address   # can also be an IP address
-  	after_validation :geocode          # auto-fetch coordinates
+  	after_validation :geocode, :if => :address_changed?         # auto-fetch coordinates
 	
+
 	scope :publicados, -> {where(state:"published")}
   	scope :ultimos, -> {order("created_at DESC")}
 

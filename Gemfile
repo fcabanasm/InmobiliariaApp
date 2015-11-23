@@ -32,8 +32,8 @@ gem "rails_admin"
 gem "paperclip"
 gem 'will_paginate-bootstrap'
 gem "aasm"
-gem 'gmaps4rails'
 gem 'geocoder'
+gem 'gmaps4rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

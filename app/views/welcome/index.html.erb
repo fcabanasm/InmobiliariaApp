@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<%Apartment.publicados.ultimos.limit(6).each do |z|%>
-		<%=link_to z do%>
+		<%=link_to z, 'data-no-turbolink' => true do%>
 	    	<div class="col-xs-4">
 	    	<div class="box relative apartment-height">
 	    	<%unless z.pictures.empty?%>
