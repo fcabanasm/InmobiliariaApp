@@ -84,6 +84,7 @@
 <div class="col-md-12">
 <h3>Dirección:</h3>
 <%=@apartment.address%>
+
 <!--<%=raw @hash.to_json %> -->
   <div style='width: 1140px;'>
     <div id="map" style='width: 1140; height: 500px;'></div>
@@ -99,20 +100,24 @@
     });
   </script>
 </div> 
-<!--¿Cuantos departamentos hay en el radio de 10 km?-->
 <%contador=0%>
-<% for @apartment in @apartment.nearbys(10) %>
-  <% contador += 1; %>
-<% end %>
-  <%if contador>0%>
-    <h3>Otras propiedades cerca de esta: </h3>
+    <h3>Propiedades cerca de esta: </h3>
   <ul>
-    <% for apartment in @apartment.nearbys(10).publicados %>
-        <li><%=link_to apartment.address, apartment%> (<%=apartment.distance.round(2)%> kilometros)</li>
+    <%Apartment.publicados.each do |a|%>
+      <%if a.geocoded?%>
+      <%unless a.address==@apartment.address%>
+        <%if @apartment.distance_from([a.latitude,a.longitude]) < 10%>
+          <li><%=link_to a.address, a%> (<%=@apartment.distance_from([a.latitude,a.longitude]).round(2)%>)(km)</li>
+          <%contador+=1%>
+          <%end%>
+        <%end%>
+      <%end%>
     <%end%>
-  <%else%>
-    <h3>No hay otras propiedades cerca de esta (10km)</h3>
+  </ul>
+  <%if contador == 0%>
+    <h4>Recorrimos 10 kilometros alrededor de esta propiedad y no encontramos otra cerca <i class="fa fa-thumbs-down"></i>
+</h4>
   <%end%>
-</ul> 
+ 
 </div>
 </div>
