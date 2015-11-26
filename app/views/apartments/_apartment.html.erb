@@ -1,18 +1,51 @@
-<%= link_to apartment, 'data-no-turbolink' => true do %>
-    <div class="col-md-4 top-space">
-      <div class="box relative apartment-height">
-      <%unless apartment.pictures.empty?%>
-        <div class="absolute apartment-height background-cover" style="background:url(<%=
-                    apartment.pictures.first.image.url%>);top:0px;left:0px;width:100%;">
-
-        </div>
+<div class="col-md-4 col-sm-6">
+    <div class="room-grid-view">
+        <%if apartment.pictures.empty?%>
+            <div class="crop">
+                <img src="/assets/offer1.jpg">
+            </div>
+        <%else%>
+            <div class="crop">
+                <%= image_tag apartment.pictures.first.image.url %>
+            </div>
         <%end%>
-        <div class="absolute apartment-height background-cover"
-             style="background:rgba(0,0,0,0.3);top:0px;left:0px;width:100%;">
-        </div>
-        <div class="relative white text-center">
-          <h2> <%= apartment.title %> </h2>
-        </div>
-      </div>
-    </div>
-<% end %>
+                        <div class="room-info">
+                            <div class="room-title">
+                                <h5><%= apartment.title %></h5>
+                                <p><i class="fa fa-map-marker"></i> <%= apartment.address %></p>
+                                <div class="hotel-ammeties">
+                                    <i class="fa fa-wifi" title="Free Wifi"></i>
+                                    <i class="fa fa-cutlery" title="Breakfast"></i>
+                                    <i class="fa fa-taxi" title="Taxi Available"></i>
+                                    <i class="fa fa-bed" title="Extra Bed"></i>
+                                    <i class="fa fa-coffee" title="Free Drinks"></i>
+                                    <i class="fa fa-beer" title="Bar"></i>
+                                </div>
+                            </div>
+                            <div class="room-desc">
+                                <p><%= apartment.description %></p>
+                            </div>
+                            <div class="hotel-rating">
+                                <div class="pull-left">
+                                    <img src="assets/images/tripadvisor.png" alt="cruise"><span>4.5/5</span>
+                                </div>
+                                <div class="pull-right">
+                                    <i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star"></i><br>
+                                    <span>128 Guest Reviews</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="room-book">
+                                <div class="col-md-8 col-sm-6 col-xs-6 clear-padding">
+                                    <h5><%= apartment.price %></h5>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
+                                    <%=link_to "Ver", apartment%> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="clearfix-sm"></div>

@@ -2,19 +2,27 @@
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 
-<article class="container">
-<h1 class="be-big blue top-space"> <%= @apartment.title  %> 
-  <%if can? :update, @apartment %>
-  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "btn btn-info" %>
-  <%end%>
-  <%if can? :destroy, @apartment %>
-  <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
-<%end%></h1>
+
+<div class="row page-title">
+    <div class="container clear-padding text-center">
+      <h3><%= @apartment.title  %> </h3>
+      <h5>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+      </h5>
+    </div>
+  </div>
 
 
-<div class="col-md-12">
-  <div class="col-md-7">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- END: PAGE TITLE -->
+  <div class="row">
+    <div class="container" style="padding-top:20px">
+      <div class="main-content col-md-8">
+          <!-- START: ROOM GALLERY -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Carousel indicators -->
       <%if @apartment.pictures.count > 1 %>
         <ol class="carousel-indicators">
@@ -31,11 +39,11 @@
                 <% @apartment.pictures.each do |pic| %>
                   <%if pic == @apartment.pictures.first%>
                     <div class="active item">
-                      <%= image_tag pic.image.url %>
+                      <%= image_tag pic.image.url, class:"apartment-carousel" %>
                     </div>
                   <%else%>
                     <div class="item">
-                      <%= image_tag pic.image.url %>
+                      <%= image_tag pic.image.url, class:"apartment-carousel" %>
                     </div>
                   <% end %>
                 <% end %>
@@ -51,44 +59,146 @@
             </a>
           <%end%>
       </div>
-  </div>
-<div class="col-md-5">
-  <div class="row center-xs top-space">
-    <div class="col-xs-12 ligth-border col-md-7 top-space">
-    <div class="col-md-12">
-      <h2>Caracteristicas Básicas:</h2>
-    </div>
-           <div class="col-md-12">
-             <i class="fa fa-bed fa-2x">Pieza(s): <%=@apartment.rooms%> </i>
-           </div>
-           <div class="col-md-12">
-            <i class="fa fa-filter fa-2x">Baño(s): <%=@apartment.bathrooms%></i>
-           </div>
-           <div class="col-md-12">
-            <i class="fa fa-money fa-2x">Precio: <%=@apartment.price%></i>
-           </div>
+        <!-- END: ROOM GALLERY -->
+        <div class="room-ammenties">
+          <div class="col-md-2 col-sm-2">
+            <h3 class="custom-head">Hotel Facilities</h3>
+          </div>
+          <div class="col-md-10 col-sm-10 hotel-room-detail">
+            <div class="ammenties-1">
+              <div class="col-md-6 col-sm-6">
+                <p><i class="fa fa-wifi"></i>Pieza(s): <%=@apartment.rooms%> </p>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <p><i class="fa fa-cutlery"></i>Baño(s): <%=@apartment.bathrooms%></p>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <p><i class="fa fa-glass"></i>Precio: <%=@apartment.price%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hr-seperator"></div>
+        <div class="hotel-room-desc">
+          <div class="col-md-2 col-sm-2">
+            <h3 class="custom-head">Room Details</h3>
+          </div>
+          <div class="col-md-10 col-sm-10 hotel-room-detail">
+            <p><%= @apartment.description%> </p>
+            <p> <%=@apartment.address%></p>
+          </div>
+        </div>
 
-    </div>
-  </div>
-</div>
-</div>
 
-<div class="col-md-12">
-  <h3>Descripción:</h3>
-  <%= @apartment.description%>
-</div>
-</article>
 
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<h3>Dirección:</h3>
-<%=@apartment.address%>
 
-<!--<%=raw @hash.to_json %> -->
-  <div style='width: 1140px;'>
-    <div id="map" style='width: 1140; height: 500px;'></div>
-  </div>
+      </div>  
+      <div class="col-md-4 hotel-detail-sidebar">
+        <div class="col-md-12 sidebar-wrapper clear-padding">
+          <div class="sidebar-booking-box" style="padding-top:20px">
+            <h3 class="text-center">MAKE A BOOKING</h3>
+            <div class="booking-box-body">
+              <form >
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <label>Check In</label>
+                  <div class="input-group margin-bottom-sm">
+                    <input type="text" id="check_in" name="check_in" class="form-control" placeholder="DD/MM/YYYY">
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <label>Check Out</label>
+                  <div class="input-group margin-bottom-sm">
+                    <input type="text" id="check_out" name="check_out" class="form-control" placeholder="DD/MM/YYYY">
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <label>Rooms</label>
+                  <select class="selectpicker" name="rooms">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <label>Adult</label>
+                  <select class="selectpicker" name="adult">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <label>Child</label>
+                  <select class="selectpicker" name="child">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                </div>
+                <div class="room-price">
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <label><input type="checkbox" name="single"><span>Deluxe Single Room</span></label>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h5><%=@apartment.price%>/Night</h5>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="room-price">
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <label><input type="checkbox" name="double"><span>Deluxe Double Room</span></label>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h5>$199/Night</h5>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="room-price">
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <label><input type="checkbox" name="royal"><span>Royal Suite</span></label>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h5>$299/Night</h5>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="grand-total text-center">
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h4>Total $599</h4>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <button type="submit">BOOK</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="sidebar-assistance-box">
+            <h3 class="text-center">NEED ASSISTANCE</h3>
+            <div class="assistance-box-body text-center">
+              <h5>Need Help? Call Us</h5>
+              <h4>+91 1234567890</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-12 hotel-room-desc">
+          <div class="col-md-2 col-sm-2">
+            <h3 class="custom-head">Ubicacion</h3>
+          </div>
+          <div class="col-md-10 col-sm-10 hotel-room-detail">
+            <div id="map" style='width: 100%; height: 300px;'></div>
   <script type="text/javascript">
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}},
@@ -96,28 +206,17 @@
       markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(13);
+      handler.getMap().setZoom(16);
     });
   </script>
-</div> 
-<%contador=0%>
-    <h3>Propiedades cerca de esta: </h3>
-  <ul>
-    <%Apartment.publicados.each do |a|%>
-      <%if a.geocoded?%>
-      <%unless a.address==@apartment.address%>
-        <%if @apartment.distance_from([a.latitude,a.longitude]) < 10%>
-          <li><%=link_to a.address, a%> (<%=@apartment.distance_from([a.latitude,a.longitude]).round(2)%>)(km)</li>
-          <%contador+=1%>
-          <%end%>
-        <%end%>
-      <%end%>
-    <%end%>
-  </ul>
-  <%if contador == 0%>
-    <h4>Recorrimos 10 kilometros alrededor de esta propiedad y no encontramos otra cerca <i class="fa fa-thumbs-down"></i>
-</h4>
-  <%end%>
- 
-</div>
-</div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- START: SIMILAR ROOMS -->
+
+
+       

@@ -1,43 +1,97 @@
-<div id="custom" class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand"><%= link_to "La Serena Fun", root_path, :class => "navbar-brand" %></a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-            </button>
+ 
+<!--Barra superior -->
+ <div class="row transparent-menu-top">
+    <div class="container clear-padding">
+      <div class="navbar-contact">
+        <div class="col-md-7 col-sm-6 clear-padding">
+          <a href="#" class="transition-effect"><i class="fa fa-phone"></i> (+56) 9 67698322</a>
+          <a href="#" class="transition-effect"><i class="fa fa-envelope-o"></i> contacto@laserenafun.cl</a>
         </div>
-        <div class="collapse navbar-collapse navbar-menubuilder">
-            <ul class="nav navbar-nav navbar-right">
-                
-
-        <%if user_signed_in?%>
-            <li >
-              <%= link_to "Editar Perfil", edit_user_registration_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %>
-            </li>
-        <%else%>
-            <li>
-                <%= link_to "Ingresar", new_user_session_path %>
-            </li>
-             <li>
-                <%= link_to "Registrarse", new_user_registration_path %>
-            </li>
-        <%end%>
-            <li><%=link_to "Arriendos", apartments_path%></li>
-            <li><a href="/contact/index">Contacto</a></li>
-
-<% if can? :access, :rails_admin %>
-<li class="dropdown ">
-<a href="lko" class="dropdown-toggle " data-toggle="dropdown" target="_blank">Administrar<b class="caret"></b></a>
-<ul class="dropdown-menu" role="menu">
-<li><%=link_to "Artículos", dashboard_path %></li>
-<li><%= link_to 'Usuarios', users_path %></li>
-<li><%= link_to 'Base de Datos', rails_admin_path %></li>
-</ul>
-</li>
-<%end%>
-            </ul>
+        <div class="col-md-5 col-sm-6 clear-padding search-box">
+          <div class="col-md-6 col-xs-5 clear-padding">
+            <form >
+              <div class="input-group">
+                <input type="text" name="search" class="form-control" required placeholder="Buscar">
+                <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+              </div>
+            </form>
+          </div>
+          <%if user_signed_in?%>
+          <div class="col-md-6 col-xs-7 clear-padding user-logged">
+            <a href="#" class="transition-effect">
+             <img src="assets/user.jpg">
+              Hi, Lenore
+            </a>
+            <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %>
+          </div>
+          <%end%>
         </div>
+      </div>
     </div>
-</div>
-  
+  </div>
+  <div class="clearfix"></div>
+<!--Fin Barra Superior -->
+
+
+<!-- -->
+<div class="row transparent-menu">
+        <div class="container clear-padding">
+            <!-- BEGIN: HEADER -->
+            <div class="navbar-wrapper">
+                <div class="navbar navbar-default" role="navigation">
+                    <!-- BEGIN: NAV-CONTAINER -->
+                    <div class="nav-container">
+                        <div class="navbar-header">
+                            <!-- BEGIN: TOGGLE BUTTON (RESPONSIVE)-->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            
+                            <!-- BEGIN: LOGO -->
+                            <%= link_to "La Serena Fun", root_path, :class => "navbar-brand logo" %>
+                        </div>
+                        
+                        <!-- BEGIN: NAVIGATION -->       
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                 <%if user_signed_in?%>
+                                    <li >
+                                      <%= link_to "Editar Perfil", edit_user_registration_path(current_user) %>
+                                    </li>
+                                <%else%>
+                                    <li>
+                                        <%= link_to "Ingresar", new_user_session_path %>
+                                    </li>
+                                     <li>
+                                        <%= link_to "Registrarse", new_user_registration_path %>
+                                    </li>
+                                <%end%>
+                                    <li><%=link_to "Arriendos", apartments_path%></li>
+                                    <li><a href="/contact/index">Contacto</a></li>
+
+                                <% if can? :access, :rails_admin %>
+                                <li class="dropdown ">
+                                <a href="lko" class="dropdown-toggle " data-toggle="dropdown" target="_blank">Administrar<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                <li><%=link_to "Propiedades", dashboard_path %></li>
+                                <li><%= link_to 'Usuarios', users_path %></li>
+                                <li><%= link_to 'Base de Datos', rails_admin_path %></li>
+                                </ul>
+                                </li>
+                                <%end%>
+                            </ul>
+                        </div>
+                        <!-- END: NAVIGATION -->
+                    </div>
+                    <!--END: NAV-CONTAINER -->
+                </div>
+            </div>
+            <!-- END: HEADER -->
+        </div>
+<!-- -->
+       
+       </div>
+

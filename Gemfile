@@ -34,6 +34,12 @@ gem 'will_paginate-bootstrap'
 gem "aasm"
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'respond-js-rails'
+gem 'wow-rails'
+gem 'bootstrap-select-rails'
+gem 'jquery-ui-rails'
+#gem 'owlcarousel-rails'
+gem 'owlcarousel2-rails', github: 'openscript/owlcarousel2-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -3,11 +3,12 @@ class Apartment < ActiveRecord::Base
 
 	belongs_to :user
   	has_many :pictures, :dependent => :destroy
-  	validates :title, presence: true
+  	validates :title, :address, presence: true
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
-  	
+  	validates :latitude, :presence => {message: "Lo sentimos, pero la dirección ingresada no es valida para Google Maps" }
+
   	geocoded_by :address   # can also be an IP address
-  	after_validation :geocode, :if => :address_changed?         # auto-fetch coordinates
+  	before_validation :geocode, :if => :address_changed?         # auto-fetch coordinates
 	
 
 	scope :publicados, -> {where(state:"published")}

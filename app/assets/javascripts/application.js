@@ -12,8 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui
+
 //= require bootstrap
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 //= require underscore
 //= require gmaps/google
+//= require wow
+//= require owl.carousel
+//= require turbolinks
 //= require_tree .

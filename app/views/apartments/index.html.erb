@@ -1,15 +1,29 @@
+<div class="row page-title">
+        <div class="container clear-padding text-center flight-title">
+            <h3>Propiedades</h3>
+            <h4 class="thank">Explora Las Propiedades disponibles</h4>
+        </div>
+    </div>
+    <!-- END: PAGE TITLE -->
+<!-- START: LISTING AREA-->
+<div class="row">
+    <div class="container clear-padding">
+        <!-- START: INDIVIDUAL LISTING AREA -->
+        <div class="hotel-listing text-center">
 
-<div class="container" style="margin:0 auto;">
-    <h1>Propiedades</h1>
-        <div class="row">
+            <!-- START: HOTEL GRID VIEW -->
+
             <%= render @apartments %>
+
+            
+            
+            <div class="clearfix"></div>
+            <!-- END: HOTEL GRID VIEW -->
+            
+            <!-- START: PAGINATION -->
+<%= will_paginate @apartments, renderer: BootstrapPagination::Rails %>
+            <!-- END: PAGINATION -->
         </div>
-        <div class="col-md field top-space">
-            <%if can? :create, Apartment %>
-                <%= link_to "Publicar uno nuevo", new_apartment_path,class:" button "%>
-            <%end%>
-            <div class="top-space text-center">
-                <%= will_paginate @apartments, renderer: BootstrapPagination::Rails %>
-            </div>
-        </div>
+        <!-- END: INDIVIDUAL LISTING AREA -->
+    </div>
 </div>

@@ -1,55 +1,19 @@
 @import "bootstrap";
+@import "owl.carousel";
+@import "owl.carousel/owl.theme.default";
 .no-float{
 	float:none;
 }
-#fondo{
-  filter: blur(5px);
-  width: auto;
-  height: auto;
-  
- }
-.custom{
-  margin-bottom: 50px;
-}
-#custom.navbar-default .navbar-brand {
-    color: rgba(255, 255, 255, 1);
-}
-#custom.navbar-default {
-    font-size: 18px;
-    background-color: rgba(223, 105, 26, 1);
-    border-bottom-width: 0px;
-}
-#custom.navbar-default .navbar-nav>li>a {
-    color: rgba(224, 224, 224, 1);
-    background-color: rgba(223, 105, 26, 1);
-}
-#custom.navbar-default .navbar-nav>li>a:hover,
-#custom.navbar-default .navbar-nav>li>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(204, 97, 20, 1);
-}
-#custom.navbar-default .navbar-nav>.active>a,
-#custom.navbar-default .navbar-nav>.active>a:hover,
-#custom.navbar-default .navbar-nav>.active>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(204, 97, 20, 1);
-}
-#custom.navbar-default .navbar-toggle {
-    border-color: #cc6114;
-}
-#custom.navbar-default .navbar-toggle:hover,
-#custom.navbar-default .navbar-toggle:focus {
-    background-color: #cc6114;
-}
-#custom.navbar-default .navbar-toggle .icon-bar {
-    background-color: #cc6114;
-}
-#custom.navbar-default .navbar-toggle:hover .icon-bar,
-#custom.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #df691a;
+.ui-datepicker table {
+    width: 100%;
+    font-size: 0.9em;
+    border-collapse: collapse;
+    margin: 0px 0px 0.4em !important;
 }
 .formborder{
-    max-width: 500px;
+    margin-bottom: 10em;
+    margin-top: 10em;
+    max-width: 40em;
     -webkit-box-shadow: 0px 0px 18px 0px rgba(48, 50, 50, 0.48);
     -moz-box-shadow:    0px 0px 18px 0px rgba(48, 50, 50, 0.48);
     box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
@@ -63,8 +27,10 @@
   color: white !important
 }
 .carousel{
-    background: #2f4357;
+    position:relative;
+    background: white;
     margin-top: 20px;
+    max-height: 500px;
 }
 .carousel .item img{
     margin: 0 auto; /* Align slide image horizontally center */
@@ -76,7 +42,7 @@
   height: 150px;
 }
 .background-cover{
-  background-position: center !important;
+background-position: center !important;
  background-size: cover !important;
 }
 .relative{
@@ -91,4 +57,34 @@
 }
 .margin-sup{
   margin-top: 3px;
+}
+.apartment-carousel {
+  position: relative;
+  width: 740px;
+  height: 492px !important;
+  overflow: hidden;
+}
+.apartment-carousel img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.apartment-carousel img.portrait {
+  width: 100%;
+  height: auto;
+}
+.crop {
+    width: 380;
+    height: 240 ;
+    overflow: hidden ;
+}
+.crop img {
+    width: 380px ;
+    height: 240px ;
+    margin: 0px 0 0 0px ;
 }
