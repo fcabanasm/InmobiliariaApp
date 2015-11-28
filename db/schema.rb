@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121213232) do
+ActiveRecord::Schema.define(version: 20151125004454) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(version: 20151121213232) do
     t.boolean  "owner"
     t.float    "latitude",               limit: 24
     t.float    "longitude",              limit: 24
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
