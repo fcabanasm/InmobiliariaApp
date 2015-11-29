@@ -64,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    daemons (1.2.3)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -73,6 +74,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    eventmachine (1.0.5)
     execjs (2.6.0)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
@@ -100,6 +102,14 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailcatcher (0.6.1)
+      activesupport (>= 4.0.0, < 5)
+      eventmachine (~> 1.0.0, <= 1.0.5)
+      mail (~> 2.3)
+      sinatra (~> 1.2)
+      skinny (~> 0.2.3)
+      sqlite3 (~> 1.3)
+      thin (~> 1.5.0)
     mime-types (2.6.2)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
@@ -120,6 +130,8 @@ GEM
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
       rack (~> 1.1)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -178,6 +190,13 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    skinny (0.2.3)
+      eventmachine (~> 1.0.0)
+      thin (~> 1.5.0)
     spring (1.4.0)
     sprockets (3.4.0)
       rack (> 1, < 3)
@@ -185,6 +204,11 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sqlite3 (1.3.11)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -224,6 +248,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  mailcatcher
   mysql2 (~> 0.3.18)
   owlcarousel2-rails!
   paperclip

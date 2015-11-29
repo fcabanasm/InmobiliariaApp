@@ -4,24 +4,24 @@
       <div class="col-md-8 col-sm-6 text-center">
         <div>
           <div class="hotel-tagline text-center">
-            <h3>Welcome To</h3>
-            <h1>Cruise Hotel & Resorts</h1>
+            <h3>Bienvenidos</h3>
+            <h1>La Serena Fun</h1>
           </div>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
         <div class="room-check">
-          <h4 class="text-center">MAKE A RESRVATION</h4>
+          <h4 class="text-center">HAZ TU RESERVA</h4>
           <div class="room-check-body">
             <form >
-              <label>Check In</label>
+              <label>Inicio</label>
               <div class="input-group">
-                <input type="text" id="check_in" name="check-in" class="form-control" placeholder="DD/MM/YYYY" required>
+                <input type="text" id="check_in" name="check-in" class="form-control" placeholder="MM/DD/YYYY" required>
                 <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
               </div>
-              <label>Check Out</label>
+              <label>Termino</label>
               <div class="input-group">
-                <input type="text" id="check_out" name="check-in" class="form-control" placeholder="DD/MM/YYYY" required>
+                <input type="text" id="check_out" name="check-in" class="form-control" placeholder="MM/DD/YYYY" required>
                 <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 padding-right">
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="submit">Check Availability</button>
+                <button type="submit">Revisar disponibilidad</button>
               </div>
             </form>
           </div>
@@ -55,15 +55,15 @@
   <div class="row">
     <div class="container hotel-desc">
       <div class="col-md-5 col-sm-6 text-center">
-        <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJG1usnet4BTkRzQqb_Ys-JOg&amp;key=AIzaSyB6hgZM-ruUqTPVUjXGUR-vv7WRqc4MXjY"></iframe>
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110671.7057381568!2d-71.31420993415864!3d-29.907769397384435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691ca649389f3c9%3A0x8a1787b3d1d84ccb!2sLa+Serena%2C+Regi%C3%B3n+de+Coquimbo%2C+Chile!5e0!3m2!1ses-419!2s!4v1448758179177"></iframe>
       </div>
       <div class="col-md-7 col-sm-6">
         <div class="hotel-intro">
-          <h2>WELCOME</h2>
-          <h4>ABOUT US</h4>
+          <h2>Bienvenido</h2>
+          <h4>ACERCA DE NOSOTROS</h4>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</p>
           <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          <a href="#">KNOW MORE <i class="fa fa-chevron-right"></i></a>
+          <a href="/contact/index">Conoce más<i class="fa fa-chevron-right"></i></a>
         </div>
       </div>
     </div>
@@ -78,154 +78,46 @@
   <div class="row top-offer">
     <div class="container">
       <div class="section-title text-center">
-        <h2>RECENT BLOG POSTS</h2>
-        <h4>NEWS</h4>
+        <h2>Últimas Propiedades</h2>
+        <h4>Publicadas</h4>
       </div>
-
-        
-
       <div id="owl-demo">
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.1s">
+      <%stop=0%>
+      <%Apartment.publicados.ultimos.each do |a|%>
+        <div class="room-grid-view wow slideInUp">
+          <%if a.pictures.empty? %>
           <div class="crop">
-            <%= image_tag("offer1.jpg", :alt => "=P") %>
+            <%= image_tag("offer1.jpg", :alt => "No tiene foto") %>
           </div>
+        <%else%>
+          <div class="crop">
+            <%= image_tag a.pictures.first.image.url %>
+          </div>
+        <%end%>
           <div class="room-info">
             <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
+              <h5><%=a.title%></h5>
+              <p><i class="fa fa-calendar"></i> Creación: <%=a.created_at%></p>
             </div>
             <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p><%=a.description%></p>
             </div>
             <div class="room-book">
               <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
                 <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
+                <%=link_to "Ver", a%>
               </div>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.2s">
-          <div class="crop">
-            <%= image_tag("offer2.jpg", :alt => "=P") %>
-          </div>
-          <div class="room-info">
-            <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
-            </div>
-            <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.3s">
-          <div class="crop">
-            <%= image_tag("offer3.jpg", :alt => "=P") %>
-          </div>
-          <div class="room-info">
-            <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
-            </div>
-            <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.1s">
-          <div class="crop">
-            <%= image_tag("offer4.jpg", :alt => "=P") %>
-          </div>
-          <div class="room-info">
-            <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
-            </div>
-            <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.2s">
-          <div class="crop">
-            <%= image_tag("offer1.jpg", :alt => "=P") %>
-          </div>
-          <div class="room-info">
-            <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
-            </div>
-            <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="room-grid-view wow slideInUp" data-wow-delay="0.3s">
-          <div class="crop">
-            <%= image_tag("offer1.jpg", :alt => "=P") %>
-          </div>
-          <div class="room-info">
-            <div class="post-title">
-              <h5>POST TITLE GOES HERE</h5>
-              <p><i class="fa fa-calendar"></i> Jul 15, 2015</p>
-            </div>
-            <div class="post-desc">
-              <p>Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
-                <a href="#" class="text-center">MORE</a> 
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-
-      </div>   
-
+        <%break if stop > 4%>
+        <%stop += 1%>
+        <%end%>
+        
+      </div>   <!--FIN OWL-->
        <script>
     $(document).ready(function() {
       $("#owl-demo").owlCarousel({
@@ -252,8 +144,8 @@
     <div class="td-overlay">
       <div class="container">
         <div class="light-section-title text-center">
-          <h2>HOTEL FACILITIES</h2>
-          <h4>EXPLORE</h4>
+          <h2>Lugares de interes</h2>
+          <h4>Disfruta</h4>
         </div>
         <div class="col-md-10 col-md-offset-1 on-top clear-padding">
           <div class="col-md-6 col-sm-6 td-product text-center clear-padding wow slideInUp" data-wow-delay="0.1s">
@@ -271,9 +163,9 @@
             <img src="assets/hotel-facility4.jpg" alt="cruise">
             <div class="overlay">
               <div class="wrapper">
-                <h5>WORLD CLASS</h5>
+                <h5>Enjoy Coquimbo</h5>
                 <h3><span>CASINO</span></h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                <p>La mejor experiencia de entretenimiento, una maravillosa sensación de desconexión y descanso, y calidez en su servicio, se traduce en una sola palabra: Enjoy, la empresa líder de la industria en Latinoamérica.</p>
                 <a href="#">KNOW MORE</a>
               </div>
             </div>
@@ -294,8 +186,8 @@
             <img src="assets/hotel-facility1.jpg" alt="cruise">
             <div class="overlay">
               <div class="wrapper">
-                <h5>WORLD CLASS</h5>
-                <h3><span>SWIMMING POOL</span></h3>
+                <h5>La Herradura</h5>
+                <h3><span>PLAYA</span></h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
                 <a href="#">KNOW MORE</a>
               </div>

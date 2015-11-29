@@ -16,15 +16,18 @@
               </div>
             </form>
           </div>
-          <%if user_signed_in?%>
-          <div class="col-md-6 col-xs-7 clear-padding user-logged">
-            <a href="#" class="transition-effect">
-             <img src="assets/user.jpg">
-              Hi, Lenore
-            </a>
-            <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %>
-          </div>
-          <%end%>
+<div class="col-md-6 col-xs-7 clear-padding user-logged">
+  <%if user_signed_in?%>
+      <%=link_to current_user.name, edit_user_registration_path(current_user)%> <i class="fa fa-user"></i>      
+      <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %> <i class="fa fa-sign-out"></i>
+  <%else%>
+      <%= link_to "Ingresar", new_user_session_path %> <i class="fa fa-sign-in"></i>
+
+      <%= link_to "Registrarse", new_user_registration_path %> <i class="fa fa-user-plus"></i>
+
+  <%end%>
+</div>
+  
         </div>
       </div>
     </div>
@@ -57,18 +60,6 @@
                         <!-- BEGIN: NAVIGATION -->       
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                 <%if user_signed_in?%>
-                                    <li >
-                                      <%= link_to "Editar Perfil", edit_user_registration_path(current_user) %>
-                                    </li>
-                                <%else%>
-                                    <li>
-                                        <%= link_to "Ingresar", new_user_session_path %>
-                                    </li>
-                                     <li>
-                                        <%= link_to "Registrarse", new_user_registration_path %>
-                                    </li>
-                                <%end%>
                                     <li><%=link_to "Arriendos", apartments_path%></li>
                                     <li><a href="/contact/index">Contacto</a></li>
 
