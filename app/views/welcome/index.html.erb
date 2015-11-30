@@ -80,7 +80,12 @@
       <div class="section-title text-center">
         <h2>Últimas Propiedades</h2>
         <h4>Publicadas</h4>
+        <h4 class="boton "><%= link_to 'VER MÁS', apartments_path, class: "btn btn-info "%></h4>
+
       </div>
+
+
+
       <div id="owl-demo">
       <%stop=0%>
       <%Apartment.publicados.ultimos.each do |a|%>
@@ -97,7 +102,7 @@
           <div class="room-info">
             <div class="post-title">
               <h5><%=a.title%></h5>
-              <p><i class="fa fa-calendar"></i> Creación: <%=a.created_at%></p>
+              <p><i class="fa fa-calendar"></i> Publicado: <%=a.created_at%></p>
             </div>
             <div class="post-desc">
               <p><%=a.description%></p>
@@ -144,7 +149,7 @@
     <div class="td-overlay">
       <div class="container">
         <div class="light-section-title text-center">
-          <h2>Lugares de interes</h2>
+          <h2>Lugares de interés</h2>
           <h4>Disfruta</h4>
         </div>
         <div class="col-md-10 col-md-offset-1 on-top clear-padding">
@@ -152,10 +157,10 @@
             <img src="assets/hotel-facility3.jpg" alt="cruise">
             <div class="overlay">
               <div class="wrapper">
-                <h5>WORLD CLASS</h5>
-                <h3><span>RESTAURANT & BAR</span></h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                <a href="#">KNOW MORE</a>
+                <h5>Faro la Serena</h5>
+                <h3><span>TOUR</span></h3>
+                <p>El Faro Monumental de La Serena es un faro chileno ubicado en la Avenida del Mar de la ciudad de La Serena. La estructura se caracteriza por ser el símbolo de reconocimiento público de la ciudad, siendo uno de los lugares turísticos más representativos y concurridos de la zona.</p>
+                <a href="https://es.wikipedia.org/wiki/Faro_Monumental_de_La_Serena">LEER MÁS</a>
               </div>
             </div>
           </div>
@@ -166,7 +171,7 @@
                 <h5>Enjoy Coquimbo</h5>
                 <h3><span>CASINO</span></h3>
                 <p>La mejor experiencia de entretenimiento, una maravillosa sensación de desconexión y descanso, y calidez en su servicio, se traduce en una sola palabra: Enjoy, la empresa líder de la industria en Latinoamérica.</p>
-                <a href="#">KNOW MORE</a>
+                <a href="http://www.enjoy.cl/coquimbo/">LEER MÁS</a>
               </div>
             </div>
           </div>
@@ -175,10 +180,10 @@
             <img src="assets/hotel-facility2.jpg" alt="cruise">
             <div class="overlay">
               <div class="wrapper">
-                <h5>WORLD CLASS</h5>
-                <h3><span>SPORTS CLUB</span></h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                <a href="#">KNOW MORE</a>
+                <h5>Valle de Elqui</h5>
+                <h3><span>NATURALEZA</span></h3>
+                <p>SI vas a la serena, es un destino fijo, imperdible lleno de arboles, historia, rios, una naturaleza que encanta. .</p>
+                <a href="http://www.valledeelqui.cl/">LEER MÁS</a>
               </div>
             </div>
           </div>
@@ -186,10 +191,10 @@
             <img src="assets/hotel-facility1.jpg" alt="cruise">
             <div class="overlay">
               <div class="wrapper">
-                <h5>La Herradura</h5>
+                <h5>Totoralillo</h5>
                 <h3><span>PLAYA</span></h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                <a href="#">KNOW MORE</a>
+                <p>Si quieres salir de serena este es un lugar cercano y espectacular para disfrutar aguas turquezas y excelentes olas.</p>
+                <a href="https://www.tripadvisor.cl/Attraction_Review-g303674-d318265-Reviews-Totoralillo-La_Serena_Coquimbo_Region.html">LEER MÁS</a>
               </div>
             </div>
           </div>

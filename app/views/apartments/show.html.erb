@@ -21,6 +21,14 @@
   <div class="row">
     <div class="container" style="padding-top:20px">
       <div class="main-content col-md-8">
+<h1>
+<b class="boton">
+        <%if can? :update, @apartment %>
+            <%= link_to 'Editar', edit_apartment_path(@apartment), class: "btn btn-info" %>
+            <%end%></b>
+          <b>  <%if can? :destroy, @apartment %>
+            <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
+            <%end%></b></h1>          
           <!-- START: ROOM GALLERY -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Carousel indicators -->
@@ -65,18 +73,18 @@
         <!-- END: ROOM GALLERY -->
         <div class="room-ammenties">
           <div class="col-md-2 col-sm-2">
-            <h3 class="custom-head">Hotel Facilities</h3>
+            <h4 class="custom-head">Detalles</h4>
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
             <div class="ammenties-1">
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-wifi"></i>Pieza(s): <%=@apartment.rooms%> </p>
+                <p><i class="fa fa-bed"></i>Pieza(s): <%=@apartment.rooms%> </p>
               </div>
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-cutlery"></i>Baño(s): <%=@apartment.bathrooms%></p>
+                <p><i class="fa fa-tint"></i>Baño(s): <%=@apartment.bathrooms%></p>
               </div>
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-glass"></i>Precio: <%=@apartment.price%></p>
+                <p><i class="fa fa-usd"></i>Precio: <%=@apartment.price%></p>
               </div>
             </div>
           </div>
@@ -84,10 +92,10 @@
         <div class="hr-seperator"></div>
         <div class="hotel-room-desc">
           <div class="col-md-2 col-sm-2">
-            <h3 class="custom-head">Room Details</h3>
+            <h4 class="custom-head">Descripción</h4>
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
-            <p><%= @apartment.description%> </p>
+            <h6><%= @apartment.description%> </h6>
           </div>
         </div>
 
@@ -95,7 +103,7 @@
       <div class="col-md-4 hotel-detail-sidebar">
         <div class="col-md-12 sidebar-wrapper clear-padding">
           <div class="sidebar-booking-box" style="padding-top:20px">
-            <h3 class="text-center">MAKE A BOOKING</h3>
+            <h3 class="text-center">SIMULAR ARRIENDO</h3>
             <div class="booking-box-body">
               <form >
                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -150,7 +158,7 @@
                     <label><input type="checkbox" name="single"><span>Deluxe Single Room</span></label>
                   </div>
                   <div class="col-md-4 col-sm-4 col-xs-4">
-                    <h5><%=@apartment.price%>/Night</h5>
+                    <h5><%=@apartment.price%>/Noche</h5>
                   </div>
                 </div>
                 <div class="clearfix"></div>
@@ -177,25 +185,25 @@
                     <h4>Total $599</h4>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
-                    <button type="submit">BOOK</button>
+                    <button type="submit">Arrendar</button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
           <div class="sidebar-assistance-box">
-            <h3 class="text-center">NEED ASSISTANCE</h3>
+            <h3 class="text-center">CONTACTO</h3>
             <div class="assistance-box-body text-center">
-              <h5>Need Help? Call Us</h5>
-              <h4>+91 1234567890</h4>
+              <h5><%= @apartment.user.name %></h5>
+              <h4><%= @apartment.user.phone_number %></h4>
             </div>
           </div>
         </div>
       </div>
         <div class="col-md-12 hotel-room-desc">
           <div class="col-md-2 col-sm-2">
-            <h3 class="custom-head">Ubicación</h3>
-            <p><%=@apartment.address%></p>            
+            <h4 class="custom-head">Ubicación</h4>
+            <h3><%=@apartment.address%></h3>            
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
             <div id="map" style='width: 100%; height: 300px;'></div>
