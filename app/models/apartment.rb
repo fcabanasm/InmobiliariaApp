@@ -15,6 +15,7 @@ class Apartment < ActiveRecord::Base
 	
 	scope :publicados, -> {where(state:"published")}
   	scope :ultimos, -> {order("created_at DESC")}
+  	scope :desarrendados, -> {where(is_rented: "false")}
 
 		aasm column: "state" do
 		state :in_draft, initial: true

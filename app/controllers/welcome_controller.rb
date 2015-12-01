@@ -7,4 +7,8 @@ class WelcomeController < ApplicationController
   	#@apartments = Apartment.paginate(page:params[:page], per_page:6).publicados.ultimos
   	@apartments = Apartment.all
   end
+
+  def dashboard2
+  	@apartments = Apartment.all
+  end
 end
