@@ -4,6 +4,7 @@ class Apartment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
   	has_many :pictures, :dependent => :destroy
+  	has_many :payments
   	validates :title, :address, presence: true
   	validates :description, presence: true, length: {minimum:20}
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
@@ -29,5 +30,7 @@ class Apartment < ActiveRecord::Base
 
 		end
 
-
+def valores_por_default
+	self.price ||= 0
+end
 end

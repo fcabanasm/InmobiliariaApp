@@ -28,7 +28,15 @@
             <%end%></b>
           <b>  <%if can? :destroy, @apartment %>
             <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
-            <%end%></b></h1>          
+            <%end%></b></h1>    
+
+<div>
+  <%if user_signed_in?%>
+  <%=render "payments/form", payment: Payment.new, apartment: @apartment%>
+  <%end%>
+</div>
+
+
           <!-- START: ROOM GALLERY -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Carousel indicators -->

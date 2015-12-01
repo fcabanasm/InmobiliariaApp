@@ -41,6 +41,8 @@ gem 'jquery-ui-rails'
 #gem 'owlcarousel-rails'
 gem 'owlcarousel2-rails', github: 'openscript/owlcarousel2-rails'
 gem 'mailcatcher'
+gem 'activemerchant'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

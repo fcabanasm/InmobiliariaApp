@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get "/shop", to: "payments#shop"
+  get "payments/express"
+  get "transactions/checkout"
   resources :categories
+  resources :payments
   get 'contact/index'
   
   resources :pictures

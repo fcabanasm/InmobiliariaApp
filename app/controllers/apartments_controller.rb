@@ -59,7 +59,7 @@ class ApartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @apartment.update(apartment_params)
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
+        format.html { redirect_to @apartment, notice: 'La propiedad se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @apartment }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class ApartmentsController < ApplicationController
   def destroy
     @apartment.destroy
     respond_to do |format|
-      format.html { redirect_to apartments_url, notice: 'Apartment was successfully destroyed.' }
+      format.html { redirect_to apartments_url, notice: 'La propiedad se elimino correctamente.' }
       format.json { head :no_content }
     end
   end
