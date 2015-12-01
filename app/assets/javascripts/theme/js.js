@@ -25,3 +25,41 @@ $(function() {
 			style: 'custom-select-button'
 		});
 });
+
+$(document).ready(function(){
+	$('#apartment_address').change(function(){
+    var dir = $("#apartment_address").val();
+    $('#map_info').remove();
+    var geocoder = new google.maps.Geocoder();
+geocoder.geocode({address: dir}, function(results, status) {
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+    provider: {
+      disableDefaultUI: true
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'map'
+    }
+  },
+  function(){
+    markers = handler.addMarkers([
+      {
+        "lat": results[0].geometry.location.G,
+        "lng": results[0].geometry.location.K
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(16);
+  }
+);
+});
+
+});
+    $("#add_img").click(function(){
+    var imgtag='<input name="images[]" id="images_" type="file">';
+    $(".img_place").prepend(imgtag);
+
+  });
+  });

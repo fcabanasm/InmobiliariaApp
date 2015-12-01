@@ -1,5 +1,16 @@
-<h1>New Apartment</h1>
+<section class="nuevoApartment">
+	<div class="container">
+		<div class="form_main col-xs-6">
+			<div class="form_title">
+				<h1>Añadir Nueva Propiedad</h1>
+			</div>
+			<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', apartments_path %>
+			<%= link_to 'Volver', apartments_path %>
+		</div>
+		<div class="map_form col-xs-6">
+			<div id="map_info"><h1> No se ha ingresado aun la direccion</h1></div>
+  			<div id="map" style='width: 100%; height: 400px;'></div>
+		</div>
+	</div>
+</section>

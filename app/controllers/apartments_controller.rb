@@ -4,7 +4,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.paginate(page:params[:page], per_page:6).publicados.ultimos
+    @apartments = Apartment.paginate(page:params[:page], per_page:6).publicados.ultimos.desarrendados
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude

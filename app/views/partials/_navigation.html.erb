@@ -60,6 +60,9 @@
                         <!-- BEGIN: NAVIGATION -->       
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
+                             <li><%if can? :create, Apartment %>
+                              <%= link_to "Publicar", new_apartment_path,class:" button "%>
+                              <%end%></li>
                                     <li><%=link_to "Arriendos", apartments_path%></li>
                                     <li><a href="/contact/index">Contacto</a></li>
 
