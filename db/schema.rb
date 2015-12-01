@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128234815) do
+ActiveRecord::Schema.define(version: 20151130224401) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -27,9 +27,17 @@ ActiveRecord::Schema.define(version: 20151128234815) do
     t.float    "latitude",    limit: 24
     t.float    "longitude",   limit: 24
     t.string   "address",     limit: 255
+    t.integer  "category_id", limit: 4
   end
 
+  add_index "apartments", ["category_id"], name: "index_apartments_on_category_id", using: :btree
   add_index "apartments", ["user_id"], name: "index_apartments_on_user_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -77,6 +85,7 @@ ActiveRecord::Schema.define(version: 20151128234815) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "apartments", "categories"
   add_foreign_key "apartments", "users"
   add_foreign_key "pictures", "apartments"
 end

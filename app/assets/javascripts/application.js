@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-
 //= require bootstrap
 //= require bootstrap-select
 //= require bootstrap/alert

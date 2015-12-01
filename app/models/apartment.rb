@@ -2,15 +2,16 @@ class Apartment < ActiveRecord::Base
  include AASM
 
 	belongs_to :user
+	belongs_to :category
   	has_many :pictures, :dependent => :destroy
   	validates :title, :address, presence: true
+  	validates :description, presence: true, length: {minimum:20}
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
   	validates :latitude, :presence => {message: "Lo sentimos, pero la dirección ingresada no es valida para Google Maps" }
-
+	validates :category, presence: true
   	geocoded_by :address   # can also be an IP address
-  	before_validation :geocode, :if => :address_changed?         # auto-fetch coordinates
+  	before_validation :geocode, :if => :address_changed?        # auto-fetch coordinates
 	
-
 	scope :publicados, -> {where(state:"published")}
   	scope :ultimos, -> {order("created_at DESC")}
 
