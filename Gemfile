@@ -42,6 +42,8 @@ gem 'jquery-ui-rails'
 gem 'owlcarousel2-rails', github: 'openscript/owlcarousel2-rails'
 gem 'mailcatcher'
 gem 'activemerchant'
+gem 'rut_validator'
+
 
 
 # Use ActiveModel has_secure_password

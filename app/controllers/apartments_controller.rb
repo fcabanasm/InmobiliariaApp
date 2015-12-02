@@ -45,7 +45,7 @@ class ApartmentsController < ApplicationController
             @apartment.pictures.create(image: image)
           }
         end
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
+        format.html { redirect_to @apartment, notice: 'Propiedad creada correctamente.' }
         format.json { render :show, status: :created, location: @apartment }
       else
         format.html { render :new }

@@ -8,11 +8,14 @@ class User < ActiveRecord::Base
   has_many :transactions
   #validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length:{in:4..20, 
-  			too_short:"Revisa el nombre ingresado, parece demasiado corto", 
-  			too_long:"Revisa el nombre ingresado, parece demasiado largo"}
-  			#,format: {with: /([]+)/, message: "El nombre solo puede contener letras"}
+  		too_short:"Revisa el nombre ingresado, parece demasiado corto", 
+  		too_long:"Revisa el nombre ingresado, parece demasiado largo"}
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
+
+validates :rut, rut: true
+validates :address, presence: true
+validates :phone_number, presence: true, numericality: true, :presence => {:message => 'debe estar presente'}
 
 def costo_compra_pendiente
   payments.where(state: 1).joins("INNER JOIN apartments on apartments.id = payments.apartment_id").sum("price")
