@@ -9,12 +9,7 @@
         </div>
         <div class="col-md-5 col-sm-6 clear-padding search-box">
           <div class="col-md-6 col-xs-5 clear-padding">
-            <form >
-              <div class="input-group">
-                <input type="text" name="search" class="form-control" required placeholder="Buscar">
-                <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-              </div>
-            </form>
+            
           </div>
 <div class="col-md-6 col-xs-7 clear-padding user-logged">
   <%if user_signed_in?%>
@@ -63,8 +58,8 @@
                              <li><%if can? :create, Apartment %>
                               <%= link_to "Publicar", new_apartment_path,class:" button "%>
                               <%end%></li>
-                                    <li><%=link_to "Arriendos", apartments_path%></li>
-                                    <li><a href="/contact/index">Contacto</a></li>
+                              <li><%=link_to "Arriendos", apartments_path%></li>
+                                <li><a href="/contact/index">Contacto</a></li>
 
                                 <% if can? :access, :rails_admin %>
                                 <li class="dropdown ">

@@ -16,34 +16,34 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title %><br>
+    <%= f.label :title,'Titulo' %><br>
     <%= f.text_field :title %>
   </div>
   <div class="form-group">
-    <%= f.label :description %><br>
+    <%= f.label :description, 'Descripción' %><br>
     <%= f.text_area :description %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><br>
+    <%= f.label :address, 'Dirección' %><br>
     <%= f.text_field :address %>
   </div>
 
   <div class="form-group">
-    <%= f.label :category_id %><br>
+    <%= f.label :category_id, 'Categoría' %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
   <div class="form-group">
-    <%= f.label :rooms %><br>
-    <%= f.number_field :rooms %>
+    <%= f.label :rooms, 'Piezas' %><br>
+    <%= f.number_field :rooms, min:"1" %>
   </div>
   <div class="form-group">
     <%= f.label :bathrooms, "Baños" %><br>
-    <%= f.number_field :bathrooms %>
+    <%= f.number_field :bathrooms, min:"1" %>
   </div>
   <div class="form-group">
     <%= f.label :price,"Precio x día" %><br>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, min:"10"%>
   </div>
 
 
@@ -52,7 +52,7 @@
     <div class="controls img_place">
     <%= file_field_tag "images[]", type: :file %>
     <label for="add_img">Añadir mas imagenes</label>
-    <span><i id="add_img" class="fa fa-plus fa-2x"></i> 
+    <span><i id="add_img" style="cursor:pointer" class="fa fa-plus fa-2x"></i> 
     </span>
     </div>
   </div>
