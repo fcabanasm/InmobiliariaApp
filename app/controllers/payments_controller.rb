@@ -26,14 +26,21 @@ class PaymentsController < ApplicationController
 		@payments = current_user.payments.where(state: 1)
 	end
 
+	def destroy
+		@payment = current_user.payments.find(params[:id])
+		@payment.destroy
+		redirect_to(:back)
+	end
+
+
 	def express
 		cost = current_user.costo_compra_pendiente
-		response = EXPRESS_GATEWAY.setup_purchase(cost,
+		response = EXPRESS_GATEWAY.setup_purchase(cost*100,
 			ip: request.remote_ip,
 			return_url: "http://localhost:3000/transactions/checkout",
 			cancel_return_url: "http://localhost:3000/shop",
 			name: "Chekout de compras en LaSerenaFun",
-			amount: cost)
+			amount: cost*100)
 		redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token, review: false)
 	end
 

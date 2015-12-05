@@ -1,14 +1,16 @@
 
 <div class="row">
     <div class="container">
-      <div class="col-md-8 col-sm-6 text-center">
+      <div class="col-md-12 col-sm-6 text-center">
         <div>
-          <div class="hotel-tagline text-center">
+          <div style="margin-bottom:200px"class="hotel-tagline text-center">
             <h3>Bienvenidos</h3>
             <h1>La Serena Fun</h1>
           </div>
         </div>
       </div>
+
+      <!--
       <div class="col-md-4 col-sm-6">
         <div class="room-check">
           <h4 class="text-center">HAZ TU RESERVA</h4>
@@ -44,7 +46,8 @@
             </form>
           </div>
         </div>
-      </div>
+      </div>-->
+
     </div>
   </div>
 
@@ -102,7 +105,7 @@
           <div class="room-info">
             <div class="post-title">
               <h5><%=a.title%></h5>
-              <p><i class="fa fa-calendar"></i> Publicado: <%=a.created_at%></p>
+              <p><i class="fa fa-calendar"></i> Fecha publicación: <%=a.created_at%></p>
             </div>
             <div class="hotel-ammeties">
                                   <% if a.wifi == true %>
@@ -132,7 +135,7 @@
                                   <%end%>
                                 </div>
             <div class="post-desc">
-              <p><%=a.description%></p>
+              <p><%=truncate(a.description,length:200)%></p>
             </div>
             <div class="room-book">
               <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">

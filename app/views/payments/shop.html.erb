@@ -1,32 +1,35 @@
-<h1><i class="fa fa-shopping-cart"></i>Pagar</h1>
-<ul class="list-group">
-	<%@payments.each do |payment|%>
-		<li class="list-group-item">
-			<div class="row">
-				<div class="col-md-6">
-					<%=payment.apartment.title%>
+<div class="container">
+	<div class="row">
+	<h1><i class="fa fa-shopping-cart"></i> Pagar</h1>
+	<ul class="list-group">
+		<%@payments.each do |payment|%>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-md-6">
+						<%=payment.apartment.title%>
+					</div>
+					<div class="col-md-3">
+						<%="#{payment.apartment.reservePrice} USD" unless payment.apartment.reservePrice.nil?%>
+					</div>
+					<div class="col-md-3">
+						<%= link_to "Eliminar", payment, method: :delete, class:"btn btn-danger"%>
+					</div>
 				</div>
-				<div class="col-md-3">
-					<%="#{payment.apartment.price}USD" unless payment.apartment.price.nil?%>
+			</li>
+		<%end%>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-md-6"><b>Total</b></div>
+					<div class="col-md-6">
+						<b><%=current_user.costo_compra_pendiente%> USD</b>
+					</div>
 				</div>
-				<div class="col-md-3">
-					
-				</div>
-			</div>
-		</li>
-	<%end%>
-
-	<li>
-		<div class="row">
-			<div class="col-md-8">Total</div>
-			<div class="col-md-3">
-				<%=current_user.costo_compra_pendiente%> USD
-			</div>
-		</div>
-	</li>
-</ul>
-<div data-no-turbolinks>
+			</li>
+	</ul>
+	<div data-no-turbolinks>
 	<%=link_to(payments_express_path, class: "btn btn-info btn-lg") do%>
 		<i class="fa fa-money"></i> Pagar
 	<%end%>
+	</div>
+	</div>
 </div>

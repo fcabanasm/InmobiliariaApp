@@ -10,16 +10,10 @@
     <div class="container clear-padding">
         <!-- START: INDIVIDUAL LISTING AREA -->
         <div class="hotel-listing text-center">
-
             <!-- START: HOTEL GRID VIEW -->
-
             <%= render @apartments %>
-
-            
-            
             <div class="clearfix"></div>
             <!-- END: HOTEL GRID VIEW -->
-            
             <!-- START: PAGINATION -->
 <%= will_paginate @apartments, renderer: BootstrapPagination::Rails %>
             <!-- END: PAGINATION -->

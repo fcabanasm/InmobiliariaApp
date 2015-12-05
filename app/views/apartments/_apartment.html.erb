@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="room-desc">
-                                <p><%= apartment.description %></p>
+                                <p><%= truncate(apartment.description,length:300) %></p>
                             </div>
                             <div class="hotel-rating">
                                 <div class="pull-left">
@@ -56,7 +56,7 @@
                             <div class="clearfix"></div>
                             <div class="room-book">
                                 <div class="col-md-8 col-sm-6 col-xs-6 clear-padding">
-                                    <h5><%= apartment.price %></h5>
+                                    <h5><%= apartment.pernightPrice %> USD/Noche</h5>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
                                     <%=link_to "Ver", apartment%> 

@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 		@transaction.save
 		respond_to  do |format|
 			if @transaction.pagar?
-				format.html {redirect_to "/", notice: "Gracias por tu compra =)"}
+				format.html {redirect_to "/", notice: "Gracias por arrendar una propiedad con nosotros, no te arrepentiras"}
 			else
 				format.html {redirect_to shop_path}
 			end

@@ -12,6 +12,7 @@ class Transaction < ActiveRecord::Base
   		self.user.payments.each do |payment|
   			payment.update(state: 2)
         payment.apartment.update(is_rented: true)
+        payment.apartment.update(state: "in_draft")
   		end
   		true
   	else

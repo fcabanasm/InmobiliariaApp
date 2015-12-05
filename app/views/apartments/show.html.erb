@@ -92,10 +92,10 @@
                 <p><i class="fa fa-tint"></i>BAÑO(S): <%=@apartment.bathrooms%></p>
               </div>
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-usd"></i>PRECIO/DÍA: US$<%=@apartment.price%></p>
+                <p><i class="fa fa-usd"></i>PRECIO/DÍA: <%=@apartment.pernightPrice%> (USD)</p>
               </div>
                <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-usd"></i>PRECIO RESERVA: US$<%=@apartment.reserveprice%></p>
+                <p><i class="fa fa-usd"></i>PRECIO RESERVA: <%=@apartment.reservePrice%> (USD)</p>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@
             <h4 class="custom-head">Descripción</h4>
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
-            <h6><%= @apartment.description%> </h6>
+            <h5><%= @apartment.description%> </h5>
           </div>
         </div>
 
@@ -169,7 +169,7 @@
                     <label><input type="checkbox" name="single"><span>Deluxe Single Room</span></label>
                   </div>
                   <div class="col-md-4 col-sm-4 col-xs-4">
-                    <h5><%=@apartment.price%>/Noche</h5>
+                    <h5><%=@apartment.pernightPrice%>/Noche</h5>
                   </div>
                 </div>
                 <div class="clearfix"></div>
@@ -242,7 +242,7 @@
         <!-- START: HOTEL GRID VIEW -->
         <%contador=0%><!--Propiedades que cumplen con las condiciones-->
         <div id="owl-demo">
-        <%Apartment.publicados.each do |a|%>
+        <%Apartment.publicados.desarrendados.each do |a|%>
         <%if a.geocoded?%>
         <%unless a.address==@apartment.address%>
         <%if @apartment.distance_from([a.latitude,a.longitude]) < 10%>
@@ -282,11 +282,10 @@
         <%end%>
         <%end%>
         <%end%>
-        <%if contador == 0%>
-    <h4>Recorrimos 10 kilometros alrededor de esta propiedad y no encontramos otra cerca <i class="fa fa-thumbs-down"></i></h4>
-  <%end%>
       </div>   <!--FIN OWL-->
-
+        <%if contador == 0%>
+    <h4>Lo sentimos, recorrimos 10 kilometros alrededor de esta propiedad y no encontramos ninguna <i class="fa fa-thumbs-down"></i></h4>
+  <%end%>
        <script>
     $(document).ready(function() {
       $("#owl-demo").owlCarousel({

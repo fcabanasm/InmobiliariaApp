@@ -42,12 +42,12 @@
     <%= f.number_field :bathrooms, min:"1" %>
   </div>
   <div class="form-group">
-    <%= f.label :price,"Precio/Día" %><br>
-    <%= f.number_field :price, min:"10", placeholder:"Valor por dia de arriendo"%>
+    <%= f.label :pernightPrice,"Precio/Día (USD)" %><br>
+    <%= f.number_field :pernightPrice, min:"10", max:"1000", placeholder:"Valor por dia de arriendo en USD"%>
   </div>
   <div class="form-group">
-    <%= f.label :reserveprice,"Precio Reserva" %><br>
-    <%= f.number_field :reserveprice, min:"10", placeholder:"Precio para reservar vivienda"%>
+    <%= f.label :reservePrice,"Precio Reserva (USD)" %><br>
+    <%= f.number_field :reservePrice, min:"10", max:"1000", placeholder:"Precio para reservar vivienda en USD"%>
   </div>
 
  <div class="form-group">
@@ -80,7 +80,7 @@
     <%= f.label :pictures, :class => 'control-label' %>
     <div class="controls img_place">
     <%= file_field_tag "images[]", type: :file %>
-    <label for="add_img">Añadir mas imagenes</label>
+    <label for="add_img">Añadir más imagenes</label>
     <span><i id="add_img" style="cursor:pointer" class="fa fa-plus fa-2x"></i> 
     </span>
     </div>
