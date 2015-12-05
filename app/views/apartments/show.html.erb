@@ -86,13 +86,16 @@
           <div class="col-md-10 col-sm-10 hotel-room-detail">
             <div class="ammenties-1">
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-bed"></i>Pieza(s): <%=@apartment.rooms%> </p>
+                <p><i class="fa fa-bed"></i>PIEZA(S): <%=@apartment.rooms%> </p>
               </div>
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-tint"></i>Baño(s): <%=@apartment.bathrooms%></p>
+                <p><i class="fa fa-tint"></i>BAÑO(S): <%=@apartment.bathrooms%></p>
               </div>
               <div class="col-md-6 col-sm-6">
-                <p><i class="fa fa-usd"></i>Precio: <%=@apartment.price%></p>
+                <p><i class="fa fa-usd"></i>PRECIO/DÍA: US$<%=@apartment.price%></p>
+              </div>
+               <div class="col-md-6 col-sm-6">
+                <p><i class="fa fa-usd"></i>PRECIO RESERVA: US$<%=@apartment.reserveprice%></p>
               </div>
             </div>
           </div>
@@ -129,7 +132,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <label>Rooms</label>
+                  <label>CANTIDAD DE DÍAS</label>
                   <select class="selectpicker" name="rooms">
                     <option>1</option>
                     <option>2</option>
@@ -193,7 +196,7 @@
                     <h4>Total $599</h4>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
-                    <button type="submit">Arrendar</button>
+                    <button type="submit">SIMULAR</button>
                   </div>
                 </div>
               </form>
@@ -203,6 +206,7 @@
             <h3 class="text-center">CONTACTO</h3>
             <div class="assistance-box-body text-center">
               <h5><%= @apartment.user.name %></h5>
+              <h4><%= @apartment.user.email %></h4>
               <h4><%= @apartment.user.phone_number %></h4>
             </div>
           </div>

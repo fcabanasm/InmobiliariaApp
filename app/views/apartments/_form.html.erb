@@ -42,12 +42,16 @@
     <%= f.number_field :bathrooms, min:"1" %>
   </div>
   <div class="form-group">
-    <%= f.label :price,"Precio x día" %><br>
-    <%= f.number_field :price, min:"10"%>
+    <%= f.label :price,"Precio/Día" %><br>
+    <%= f.number_field :price, min:"10", placeholder:"Valor por dia de arriendo"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :reserveprice,"Precio Reserva" %><br>
+    <%= f.number_field :reserveprice, min:"10", placeholder:"Precio para reservar vivienda"%>
   </div>
 
  <div class="form-group">
-      <h4 class="form-group">Caracteristicas Adicionales</h4>
+      <h4 class="form_title">Características Adicionales</h4>
        <div>
          <%= f.check_box :wifi %>
           <%= f.label :wifi %>
@@ -62,7 +66,7 @@
        </div>       
         <div>
           <%= f.check_box :tvcable %>
-          <%= f.label :tvcable,'TvCable' %>
+          <%= f.label :tvcable,'Tv Satelital' %>
         </div>  
         <div>
           <%= f.check_box :parking %>
