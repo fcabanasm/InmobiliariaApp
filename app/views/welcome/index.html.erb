@@ -104,6 +104,33 @@
               <h5><%=a.title%></h5>
               <p><i class="fa fa-calendar"></i> Publicado: <%=a.created_at%></p>
             </div>
+            <div class="hotel-ammeties">
+                                  <% if a.wifi == true %>
+                                    <i class="fa fa-wifi" style="color:green" title="Wifi"></i>
+                                    <%else%>
+                                    <i class="fa fa-wifi" title=" Sin Wifi"></i>
+                                  <%end%>
+                                  <% if a.tv == true %>
+                                    <i class="fa fa-television" style="color:green" title="Television"></i>
+                                    <%else%>
+                                    <i class="fa fa-television" title=" Sin Television"></i>
+                                  <%end%>
+                                  <% if a.radio == true %>
+                                    <i class="fa fa-headphones" style="color:green" title="Radio"></i>
+                                    <%else%>
+                                    <i class="fa fa-headphones" title=" Sin Radio"></i>
+                                  <%end%>
+                                  <% if a.tvcable == true %>
+                                    <i class="fa fa-rss-square" style="color:green" title="Antena Satelital"></i>
+                                    <%else%>
+                                    <i class="fa fa-rss-square" title=" Sin Antena Satelital"></i>
+                                  <%end%>
+                                  <% if a.parking == true %>
+                                    <i class="fa fa-car" style="color:green" title="Estacionamiento"></i>
+                                    <%else%>
+                                    <i class="fa fa-car" title=" Sin Estacionamiento"></i>
+                                  <%end%>
+                                </div>
             <div class="post-desc">
               <p><%=a.description%></p>
             </div>

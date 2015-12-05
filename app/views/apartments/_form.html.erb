@@ -46,6 +46,31 @@
     <%= f.number_field :price, min:"10"%>
   </div>
 
+ <div class="form-group">
+      <h4 class="form-group">Caracteristicas Adicionales</h4>
+       <div>
+         <%= f.check_box :wifi %>
+          <%= f.label :wifi %>
+       </div>       
+        <div>
+          <%= f.check_box :tv %>
+          <%= f.label :tv %>
+        </div>
+           <div>
+         <%= f.check_box :radio %>
+          <%= f.label :radio %>
+       </div>       
+        <div>
+          <%= f.check_box :tvcable %>
+          <%= f.label :tvcable,'TvCable' %>
+        </div>  
+        <div>
+          <%= f.check_box :parking %>
+          <%= f.label :parking,'Estacionamiento' %>
+        </div>
+        
+  </div>
+
 
   <div class="form-group">
     <%= f.label :pictures, :class => 'control-label' %>

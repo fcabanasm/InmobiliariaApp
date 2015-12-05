@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201224314) do
+ActiveRecord::Schema.define(version: 20151205051053) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20151201224314) do
     t.float    "longitude",   limit: 24
     t.string   "address",     limit: 255
     t.integer  "category_id", limit: 4
+    t.boolean  "wifi",                      default: false
+    t.boolean  "tv",                        default: false
+    t.boolean  "radio",                     default: false
+    t.boolean  "tvcable",                   default: false
+    t.boolean  "parking",                   default: false
   end
 
   add_index "apartments", ["category_id"], name: "index_apartments_on_category_id", using: :btree

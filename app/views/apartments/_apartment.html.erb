@@ -14,12 +14,31 @@
                                 <h5><%= apartment.title %></h5>
                                 <p><i class="fa fa-map-marker"></i> <%= apartment.address %></p>
                                 <div class="hotel-ammeties">
-                                    <i class="fa fa-wifi" title="Free Wifi"></i>
-                                    <i class="fa fa-cutlery" title="Breakfast"></i>
-                                    <i class="fa fa-taxi" title="Taxi Available"></i>
-                                    <i class="fa fa-bed" title="Extra Bed"></i>
-                                    <i class="fa fa-coffee" title="Free Drinks"></i>
-                                    <i class="fa fa-beer" title="Bar"></i>
+                                  <% if apartment.wifi == true %>
+                                    <i class="fa fa-wifi" style="color:green" title="Wifi"></i>
+                                    <%else%>
+                                    <i class="fa fa-wifi" title=" Sin Wifi"></i>
+                                  <%end%>
+                                  <% if apartment.tv == true %>
+                                    <i class="fa fa-television" style="color:green" title="Television"></i>
+                                    <%else%>
+                                    <i class="fa fa-television" title=" Sin Television"></i>
+                                  <%end%>
+                                  <% if apartment.radio == true %>
+                                    <i class="fa fa-headphones" style="color:green" title="Radio"></i>
+                                    <%else%>
+                                    <i class="fa fa-headphones" title=" Sin Radio"></i>
+                                  <%end%>
+                                  <% if apartment.tvcable == true %>
+                                    <i class="fa fa-rss-square" style="color:green" title="Antena Satelital"></i>
+                                    <%else%>
+                                    <i class="fa fa-rss-square" title=" Sin Antena Satelital"></i>
+                                  <%end%>
+                                  <% if apartment.parking == true %>
+                                    <i class="fa fa-car" style="color:green" title="Estacionamiento"></i>
+                                    <%else%>
+                                    <i class="fa fa-car" title=" Sin Estacionamiento"></i>
+                                  <%end%>
                                 </div>
                             </div>
                             <div class="room-desc">

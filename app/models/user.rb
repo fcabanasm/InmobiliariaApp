@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
 validates :rut, rut: true
 validates :address, presence: true
-validates :phone_number, presence: true, numericality: true, :presence => {:message => 'debe estar presente'}
+validates :phone_number, presence: true, numericality: true
 
 def costo_compra_pendiente
   payments.where(state: 1).joins("INNER JOIN apartments on apartments.id = payments.apartment_id").sum("price")
