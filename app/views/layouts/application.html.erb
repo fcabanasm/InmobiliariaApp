@@ -15,6 +15,15 @@
   <body data-no-turbolink="false">
 <%- end %>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <%=render "partials/navigation"%>
     
     <%if notice%>
@@ -22,15 +31,15 @@
         <button type="button" class="close" data-dismiss="alert">Cerrar</button>
         <p class="alert-link"><%= notice %></p>
     </div>
-		
-	<%end%>
-	<%if alert%>
+    
+  <%end%>
+  <%if alert%>
      <div class="alert alert-dismissible alert-danger">
         <button type="button" class="close" data-dismiss="alert">Cerrar</button>
         <p class="alert-link"><%= alert %></p>
     </div>
-	<%end%>
-	<%= yield %>
+  <%end%>
+  <%= yield %>
 <section id="footer">
   <footer>
     <div class="clearfix"></div>

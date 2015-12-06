@@ -39,9 +39,6 @@
             <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
             <%end%></b></h1>    
 
-
-
-
           <!-- START: ROOM GALLERY -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Carousel indicators -->
@@ -83,6 +80,22 @@
             </a>
           <%end%>
       </div>
+<div class="social">
+<div class="row">
+  <div class="col-md-2" style="position:absolute;">
+    <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
+  </div>
+  <div class="col-md-2 pull-right">
+  <div class="fb-share-button" data-href="<%=request.fullpath%>" data-layout="button"></div>
+  </div>
+  <div style="margin-right:10px" class="col-md-1 pull-right">
+  <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="<%=request.fullpath%>" data-via="LaSerenaFun" data-related="LaSerenaFun" data-hashtags="LaSerenaFun">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </div>
+</div>
+</div>
+
+
         <!-- END: ROOM GALLERY -->
         <div class="room-ammenties">
           <div class="col-md-2 col-sm-2">
@@ -147,14 +160,14 @@
                     <button type="submit">SIMULAR</button>
                   </div>
                 </div>
+                <%if user_signed_in?%>
               </form>
               <div style="background-color:#00688D" class="grand-total text-center">
               <div>
-  <%if user_signed_in?%>
   <%=render "payments/form", payment: Payment.new, apartment: @apartment%>
-  <%end%>
 </div>
  </div>
+  <%end%>
             </div>
           </div>
           <div class="sidebar-assistance-box">
