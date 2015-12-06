@@ -31,7 +31,7 @@ $(document).ready(function(){
     var dir = $("#apartment_address").val();
     $('#map_info').remove();
     var geocoder = new google.maps.Geocoder();
-geocoder.geocode({address: dir}, function(results, status) {
+    geocoder.geocode({address: dir}, function(results, status) {
     handler = Gmaps.build('Google');
     handler.buildMap({
     provider: {
@@ -57,9 +57,27 @@ geocoder.geocode({address: dir}, function(results, status) {
 });
 
 });
+    var current_img=1;
     $("#add_img").click(function(){
-    var imgtag='<input name="images[]" id="images_" type="file">';
-    $(".img_place").prepend(imgtag);
+      if(current_img<3){
+        var imgtag='<input name="images[]" id="images_" type="file">';
+        $(".img_place").prepend(imgtag);
+        current_img++; 
+      }
+    });
 
+  $('#pictureInput').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.src = file.target.result;
+      $('#target').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
   });
+
   });

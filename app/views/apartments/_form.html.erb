@@ -19,13 +19,53 @@
     <%= f.label :title,'Titulo' %><br>
     <%= f.text_field :title %>
   </div>
+
   <div class="form-group">
     <%= f.label :description, 'Descripción' %><br>
     <%= f.text_area :description %>
   </div>
+
+ <div class="form-group">
+    <%= f.label :pictures, "Fotos", :class => 'control-label' %>
+
+    <div id="" class="owl-carousel">
+      <div class="thumbnail carousel" id="target"></div>
+      <div class="thumbnail carousel" id="target"></div>
+      <div class="thumbnail carousel" id="target"></div>
+    </div>
+    <script>
+    $(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    dots: false,
+    loop: true,
+    responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          1000: {
+            items: 3
+          }
+    }
+  });
+});
+
+    </script>
+      
+      <%= file_field_tag "images[]", type: :file, id: "pictureInput" %>
+      <div class="img_place"></div>
+      <label for="add_img">Añadir más imagenes</label>
+      <span><i id="add_img" style="cursor:pointer" class="fa fa-plus fa-2x"></i> 
+      </span>
+  </div>
+
   <div class="form-group">
     <%= f.label :address, 'Dirección' %><br>
     <%= f.text_field :address %>
+    <div id="map_info"><h4>Ingrese nueva dirección para verla en el mapa.</h4></div>
+        <div id="map" style='width: 100%; height: 400px;'></div>
   </div>
 
   <div class="form-group">
@@ -51,7 +91,7 @@
   </div>
 
  <div class="form-group">
-      <h4 class="form_title">Características Adicionales</h4>
+      <%= f.label :f,"Características Adicionales" %><br>
        <div>
          <%= f.check_box :wifi %>
           <%= f.label :wifi %>
@@ -76,30 +116,14 @@
   </div>
 
 
-  <div class="form-group">
-    <%= f.label :pictures, :class => 'control-label' %>
-    <div class="controls img_place">
-    <%= file_field_tag "images[]", type: :file %>
-    <label for="add_img">Añadir más imagenes</label>
-    <span><i id="add_img" style="cursor:pointer" class="fa fa-plus fa-2x"></i> 
-    </span>
-    </div>
-  </div>
-
   <div class="form-actions">
     <%= f.submit "Publicar", :class => 'btn btn-info' %>
   </div>
 <% end %>
 
 <style>
-.nuevoApartment{
-
-}
-.form_title{
-
-}
 .form_title h1{
-  display: inline-block;
+text-align: center;
 box-sizing: border-box;
 color: #4C565E;
 font-size: 24px;
@@ -108,9 +132,7 @@ margin-left: 0;
 margin-right: 0;
 border-bottom: 2px solid #6CAEE0;
 }
-.new_apartment{
-  
-}
+
 .new_apartment .form-group label{
   color: #4C565E;
   text-align: center;
@@ -122,9 +144,8 @@ border-bottom: 2px solid #6CAEE0;
   padding: 5px;
 }
 input[type="text"], input[type="password"],input[type="number"],textarea,select{
-
-
-    width: 350px;
+    width: 100%;
+    height: auto;
     padding: 20px 0px;
     background: transparent;
     border: 0;
@@ -139,7 +160,13 @@ input[type="file"]{
     margin: 0;
     padding: 4px;
     color:#333;
-
 }
-
+#apartment_description{
+  height: 200px;
+  max-width: 100%;
+  min-width: 100%;
+}
+.carousel{
+  margin: 0 auto 0 auto;
+}
 </style>

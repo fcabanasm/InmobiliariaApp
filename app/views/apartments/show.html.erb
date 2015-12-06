@@ -137,7 +137,7 @@
               <form >
                 <div class="col-md-12 col-sm-4 col-xs-4">
                   <label>CANTIDAD DE DÍAS: </label>
-                  <select>
+                  <select id="simule_cant">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -153,11 +153,8 @@
                 <div class="clearfix"></div>
                 
                 <div class="grand-total text-center">
-                  <div class="col-md-6 col-sm-6 col-xs-6">
-                    <h4>Total $599</h4>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-xs-6">
-                    <button type="submit">SIMULAR</button>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h4 id="simule_total"></h4>
                   </div>
                 </div>
                 <%if user_signed_in?%>
@@ -275,3 +272,11 @@
     </div> 
   </div>
  </div>  
+ <script type="text/javascript">
+var pernightPrice = <%=@apartment.pernightPrice%>;
+var reservePrice = <%=@apartment.pernightPrice%>;
+$('#simule_total').html("Total: $"+pernightPrice + " (USD)<br><h6>No incluye precio reserva</h6>");
+$('#simule_cant').change(function(){
+  $('#simule_total').html("Total: $"+$(this).val()*pernightPrice + " (USD)<br><h6>No incluye precio reserva</h6>");
+});
+ </script>

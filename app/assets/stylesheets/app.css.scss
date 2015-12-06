@@ -19,6 +19,15 @@
     box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
     border-radius: 6%;
   }
+.formborderApartment{
+    margin-bottom: 10em;
+    margin-top: 10em;
+    max-width: 65em;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    -moz-box-shadow:    0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    border-radius: 1%;
+  }
 .btn-info{
   background-color: #DF691A;
   border-color: #DF691A;
@@ -106,4 +115,24 @@ background-position: center !important;
 .boton a:hover{
 background-color: #FF6F00;
 color: white;
+}
+.thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
 }

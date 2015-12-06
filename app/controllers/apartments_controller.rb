@@ -23,13 +23,13 @@ class ApartmentsController < ApplicationController
   # GET /apartments/new
   def new
     @apartment = Apartment.new
-    3.times {@apartment.pictures.build} # added this
+    5.times {@apartment.pictures.build} # added this
   end
 
   # GET /apartments/1/edit
   def edit
     @apartment = Apartment.find(params[:id])
-    3.times { @apartment.pictures.build } # ... and this
+    #3.times { @apartment.pictures.build } # ... and this
     @apartment.update(state: "unpublished_unrented")
   end
 
