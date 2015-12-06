@@ -14,6 +14,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1
   # GET /apartments/1.json
   def show
+    @apartment.update_visits_count
     @hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude

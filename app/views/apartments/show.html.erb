@@ -6,6 +6,7 @@
 <div class="row page-title">
     <div class="container clear-padding text-center">
       <h3><%= @apartment.title  %> </h3>
+      <h4><%= @apartment.visits_count%> visitas</h4>
 
       <%if @apartment.state=="unpublished_unrented"%>
         <h4>PROPIEDAD NO DISPONIBLE</h4>
@@ -116,7 +117,30 @@
                 <p><i class="fa fa-usd"></i>PRECIO RESERVA: <%=@apartment.reservePrice%> (USD)</p>
               </div>
             </div>
+            <div>
+            <h4 class="custom-head">Extras</h4>
+            <p>
+              <div class="hotel-ammeties">
+                                  <% if @apartment.wifi == true %>
+                                    <i class="fa fa-wifi" style="color:green" title="Wifi"></i>
+                                  <%end%>
+                                  <% if @apartment.tv == true %>
+                                    <i class="fa fa-television" style="color:green" title="Televisión"></i>
+                                  <%end%>
+                                  <% if @apartment.radio == true %>
+                                    <i class="fa fa-headphones" style="color:green" title="Radio"></i>
+                                  <%end%>
+                                  <% if @apartment.tvcable == true %>
+                                    <i class="fa fa-rss-square" style="color:green" title="Televisió Satelital"></i>
+                                  <%end%>
+                                  <% if @apartment.parking == true %>
+                                    <i class="fa fa-car" style="color:green" title="Estacionamiento"></i>
+                                  <%end%>
+                  </p>
+            </div>
           </div>
+          </div>
+          
         </div>
         <div class="hr-seperator"></div>
         <div class="hotel-room-desc">
@@ -148,6 +172,11 @@
                     <option>8</option>
                     <option>9</option>
                     <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
                   </select>
                 </div>
                 <div class="clearfix"></div>

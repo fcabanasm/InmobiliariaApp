@@ -16,6 +16,7 @@ class Apartment < ActiveRecord::Base
 	validates :rooms,presence: true, :numericality => {:greater_than_or_equal_to => 1} 
 	validates :pernightPrice,presence: true, :numericality => {:greater_than_or_equal_to => 10} 
 	validates :reservePrice,presence: true, :numericality => {:greater_than_or_equal_to => 10}
+	before_save :set_visits_count
 	
 	scope :ultimos, -> {order("created_at DESC")}
 	scope :publicados_sinArrrendar, -> {where(state:"published_unrented")}
@@ -49,4 +50,15 @@ class Apartment < ActiveRecord::Base
 def valores_por_default
 	self.price ||= 0
 end
+
+def update_visits_count
+	self.save if visits_count.nil?
+     self.update(visits_count: self.visits_count + 1)
+     end
+
+	private
+
+	def  set_visits_count
+		self.visits_count ||=0
+	end
 end
