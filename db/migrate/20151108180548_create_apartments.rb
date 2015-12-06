@@ -4,7 +4,6 @@ class CreateApartments < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.references :user, index: true, foreign_key: true
-      t.boolean :is_rented
       t.integer :rooms
       t.integer :bathrooms
       t.integer :price

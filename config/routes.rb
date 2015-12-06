@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   #get 'welcome/index'
-
   get "/dashboard", to: "welcome#dashboard"
+  get "/MisPropiedades", to: "welcome#ownerDashboard"
+  put "apartments/:id/ownerUnRent", to: "apartments#ownerUnRent"
+  put "apartments/:id/adminPublish", to: "apartments#adminPublish"
+  put "apartments/:id/adminUnPublish", to: "apartments#adminUnPublish"
 
-  put "apartments/:id/publish", to: "apartments#publish"
-  put "apartments/:id/unpublish", to: "apartments#unpublish"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

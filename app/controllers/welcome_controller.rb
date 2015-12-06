@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
   	@apartments = Apartment.all
   end
 
-  def dashboard2
+  def ownerDashboard
   	@apartments = Apartment.all
   end
 end

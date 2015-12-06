@@ -87,15 +87,13 @@
 
       </div>
 
-
-
       <div id="owl-demo">
       <%stop=0%>
-      <%Apartment.publicados.ultimos.desarrendados.each do |a|%>
+      <%Apartment.publicados_sinArrrendar.ultimos.each do |a|%>
         <div class="room-grid-view wow slideInUp">
           <%if a.pictures.empty? %>
           <div class="crop">
-            <%= image_tag("offer1.jpg", :alt => "No tiene foto") %>
+            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto") %>
           </div>
         <%else%>
           <div class="crop">

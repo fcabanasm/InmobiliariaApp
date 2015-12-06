@@ -11,8 +11,7 @@ class Transaction < ActiveRecord::Base
   	if response.success?
   		self.user.payments.each do |payment|
   			payment.update(state: 2)
-        payment.apartment.update(is_rented: true)
-        payment.apartment.update(state: "in_draft")
+        payment.apartment.update(state: "unpublished_rented")
   		end
   		true
   	else

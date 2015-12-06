@@ -6,13 +6,22 @@
 <div class="row page-title">
     <div class="container clear-padding text-center">
       <h3><%= @apartment.title  %> </h3>
+
+      <%if @apartment.state=="unpublished_unrented"%>
+        <h4>PROPIEDAD NO DISPONIBLE</h4>
+      <%end%>
+
+       <%if @apartment.state=="unpublished_rented"%>
+        <h4>ESTA PROPIEDAD FUE ARRENDADA</h4>
+      <%end%>
+      <!--
       <h5>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star-o"></i>
-      </h5>
+      </h5>-->
     </div>
   </div>
 
@@ -30,11 +39,7 @@
             <%= link_to 'Eliminar', @apartment, method: :delete, class: "btn btn-danger white", data: { confirm: '¿Estas seguro?' } %>
             <%end%></b></h1>    
 
-<div>
-  <%if user_signed_in?%>
-  <%=render "payments/form", payment: Payment.new, apartment: @apartment%>
-  <%end%>
-</div>
+
 
 
           <!-- START: ROOM GALLERY -->
@@ -64,7 +69,7 @@
                 <% end %>
             <%else%>
               <div class="active item">
-                <%= image_tag("offer1.jpg", :alt => "No tiene foto", class:"apartment-carousel") %>
+                <%= image_tag("sinfoto.jpg", :alt => "No tiene foto", class:"apartment-carousel") %>
               </div>
             <%end%>
           </div>
@@ -117,80 +122,23 @@
             <h3 class="text-center">SIMULAR ARRIENDO</h3>
             <div class="booking-box-body">
               <form >
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                  <label>Check In</label>
-                  <div class="input-group margin-bottom-sm">
-                    <input type="text" id="check_in" name="check_in" class="form-control" placeholder="DD/MM/YYYY">
-                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                  <label>Check Out</label>
-                  <div class="input-group margin-bottom-sm">
-                    <input type="text" id="check_out" name="check_out" class="form-control" placeholder="DD/MM/YYYY">
-                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <label>CANTIDAD DE DÍAS</label>
-                  <select class="selectpicker" name="rooms">
+                <div class="col-md-12 col-sm-4 col-xs-4">
+                  <label>CANTIDAD DE DÍAS: </label>
+                  <select>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
                     <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
                   </select>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <label>Adult</label>
-                  <select class="selectpicker" name="adult">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                  </select>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <label>Child</label>
-                  <select class="selectpicker" name="child">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                  </select>
-                </div>
-                <div class="room-price">
-                  <div class="col-md-8 col-sm-8 col-xs-8">
-                    <label><input type="checkbox" name="single"><span>Deluxe Single Room</span></label>
-                  </div>
-                  <div class="col-md-4 col-sm-4 col-xs-4">
-                    <h5><%=@apartment.pernightPrice%>/Noche</h5>
-                  </div>
-                </div>
                 <div class="clearfix"></div>
-                <div class="room-price">
-                  <div class="col-md-8 col-sm-8 col-xs-8">
-                    <label><input type="checkbox" name="double"><span>Deluxe Double Room</span></label>
-                  </div>
-                  <div class="col-md-4 col-sm-4 col-xs-4">
-                    <h5>$199/Night</h5>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="room-price">
-                  <div class="col-md-8 col-sm-8 col-xs-8">
-                    <label><input type="checkbox" name="royal"><span>Royal Suite</span></label>
-                  </div>
-                  <div class="col-md-4 col-sm-4 col-xs-4">
-                    <h5>$299/Night</h5>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
+                
                 <div class="grand-total text-center">
                   <div class="col-md-6 col-sm-6 col-xs-6">
                     <h4>Total $599</h4>
@@ -200,6 +148,13 @@
                   </div>
                 </div>
               </form>
+              <div style="background-color:#00688D" class="grand-total text-center">
+              <div>
+  <%if user_signed_in?%>
+  <%=render "payments/form", payment: Payment.new, apartment: @apartment%>
+  <%end%>
+</div>
+ </div>
             </div>
           </div>
           <div class="sidebar-assistance-box">
@@ -242,7 +197,7 @@
         <!-- START: HOTEL GRID VIEW -->
         <%contador=0%><!--Propiedades que cumplen con las condiciones-->
         <div id="owl-demo">
-        <%Apartment.publicados.desarrendados.each do |a|%>
+        <%Apartment.publicados_sinArrrendar.each do |a|%>
         <%if a.geocoded?%>
         <%unless a.address==@apartment.address%>
         <%if @apartment.distance_from([a.latitude,a.longitude]) < 10%>
@@ -250,7 +205,7 @@
         <div class="room-grid-view wow slideInUp">
         <%if a.pictures.empty? %>
           <div class="crop">
-            <%= image_tag("offer1.jpg", :alt => "No tiene foto") %>
+            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto") %>
           </div>
         <%else%>
           <div class="crop">

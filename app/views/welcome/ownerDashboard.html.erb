@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <%Apartment.all.ultimos.each do |z|%>
+        <%current_user.apartments.ultimos.each do |z|%>
         <%=link_to z do%>
             <div class="col-xs-4">
             <div class="box relative apartment-height">
@@ -16,15 +16,11 @@
                 </div>
             </div>
             <div class="top-space text-center margin-sup">
-                <% if z.may_adminPublish? %>
-                <%= link_to "Publicar", "/apartments/#{z.id}/adminPublish", class:"btn btn-success", method: :put%>
-                <%end%>
-                <% if z.may_adminUnPublish? %>
-                <%= link_to "Desactivar", "/apartments/#{z.id}/adminUnPublish", class:"btn btn-danger", method: :put%>
+                <% if z.may_ownerUnRent? %>
+                <%= link_to "Fin Arriendo", "/apartments/#{z.id}/ownerUnRent", class:"btn btn-danger", method: :put%>
                 <%end%>
             </div>
             </div>
-    
         <%end%>
         <%end%>
     </div>

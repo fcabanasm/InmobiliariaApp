@@ -17,13 +17,12 @@ ActiveRecord::Schema.define(version: 20151205175646) do
     t.string   "title",         limit: 255
     t.text     "description",   limit: 65535
     t.integer  "user_id",       limit: 4
-    t.boolean  "is_rented",                   default: false
     t.integer  "rooms",         limit: 4,     default: 0
     t.integer  "bathrooms",     limit: 4,     default: 0
     t.integer  "pernightPrice", limit: 4
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "state",         limit: 255,   default: "in_draft"
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.string   "state",         limit: 255,   default: "unpublished_unrented"
     t.float    "latitude",      limit: 24
     t.float    "longitude",     limit: 24
     t.string   "address",       limit: 255

@@ -4,7 +4,7 @@ class Apartment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
   	has_many :pictures, :dependent => :destroy
-  	has_many :payments
+  	has_many :payments, :dependent => :destroy
   	validates :title, :address, presence: true
   	validates :description, presence: true, length: {minimum:20}
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
@@ -16,21 +16,33 @@ class Apartment < ActiveRecord::Base
 	validates :rooms,presence: true, :numericality => {:greater_than_or_equal_to => 1} 
 	validates :pernightPrice,presence: true, :numericality => {:greater_than_or_equal_to => 10} 
 	validates :reservePrice,presence: true, :numericality => {:greater_than_or_equal_to => 10}
-	scope :publicados, -> {where(state:"published")}
-  	scope :ultimos, -> {order("created_at DESC")}
-  	scope :desarrendados, -> {where(is_rented: "false")}
-
+	
+	scope :ultimos, -> {order("created_at DESC")}
+	scope :publicados_sinArrrendar, -> {where(state:"published_unrented")}
+  	scope :noPublicados_sinArrendar, -> {where(state: "unpublished_unrented")}
+	scope :noPublicados_Arrendados, -> {where(state: "unpublished_rented")}
+		
 		aasm column: "state" do
-		state :in_draft, initial: true
-		state :published
+			state :unpublished_unrented, initial: true
+			state :published_unrented
+			state :unpublished_rented
 
-		event :publish do
-		transitions from: :in_draft,to: :published
-		end
-
-		event :unpublish do
-			transitions from: :published,to: :in_draft
-		end
+#ADMIN AL PUBLICAR: PUBLICAR un NO-ARRENDADO
+			event :adminPublish do
+				transitions from: :unpublished_unrented, to: :published_unrented
+			end
+#ADMIN AL DESPUBLICAR: DESPUBLICAR un NO-ARRENDADO
+			event :adminUnPublish do
+				transitions from: :published_unrented, to: :unpublished_unrented
+			end
+#USER AL PAGAR: DESPUBLICAR & DESARRENDAR un PULICADO & NO-ARRENDADO
+			event :userPay do
+				transitions from: :published_unrented, to: :unpublished_rented
+			end
+#OWNER FIN ARRIENDO: DESARRENDAR un ARRENDADO
+			event :ownerUnRent do
+				transitions from: :unpublished_rented, to: :unpublished_unrented
+			end
 
 		end
 

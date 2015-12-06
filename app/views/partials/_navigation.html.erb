@@ -55,17 +55,23 @@
                         <!-- BEGIN: NAVIGATION -->       
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-                             <li><%if can? :create, Apartment %>
-                              <%= link_to "Publicar", new_apartment_path,class:" button "%>
-                              <%end%></li>
+                             <%if can? :create, Apartment %>
+                                <li class="dropdown ">
+                                <a href="lko" class="dropdown-toggle " data-toggle="dropdown" target="_blank">Propiedades<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                <li><%=link_to "Mis Propiedades", "/MisPropiedades" %></li>
+                        <li><%= link_to "Publicar una nueva", new_apartment_path,class:" button "%></li>
+                                </ul>
+                                </li>
+                              <%end%>
                               <li><%=link_to "Arriendos", apartments_path%></li>
                                 <li><a href="/contact/index">Contacto</a></li>
-
                                 <% if can? :access, :rails_admin %>
                                 <li class="dropdown ">
                                 <a href="lko" class="dropdown-toggle " data-toggle="dropdown" target="_blank">Administrar<b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
                                 <li><%=link_to "Propiedades", dashboard_path %></li>
+                                <li><%=link_to "Categorias", categories_path %></li>
                                 <li><%= link_to 'Usuarios', users_path %></li>
                                 <li><%= link_to 'Base de Datos', rails_admin_path %></li>
                                 </ul>

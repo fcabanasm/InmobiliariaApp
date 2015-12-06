@@ -4,7 +4,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.paginate(page:params[:page], per_page:6).publicados.ultimos.desarrendados
+    @apartments = Apartment.paginate(page:params[:page], per_page:6).publicados_sinArrrendar.ultimos
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
@@ -30,6 +30,7 @@ class ApartmentsController < ApplicationController
   def edit
     @apartment = Apartment.find(params[:id])
     3.times { @apartment.pictures.build } # ... and this
+    @apartment.update(state: "unpublished_unrented")
   end
 
   # POST /apartments
@@ -78,13 +79,18 @@ class ApartmentsController < ApplicationController
     end
   end
 
-  def publish
-    @apartment.publish!
+  def adminPublish
+    @apartment.adminPublish!
     redirect_to :back
   end
 
-  def unpublish
-    @apartment.unpublish!
+  def adminUnPublish
+    @apartment.adminUnPublish!
+    redirect_to :back
+  end
+
+  def ownerUnRent
+    @apartment.ownerUnRent!
     redirect_to :back
   end
 
