@@ -28,6 +28,15 @@
     box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
     border-radius: 1%;
   }
+.formborderCategory{
+    margin-bottom: 20em;
+    margin-top: 10em;
+    max-width: 50em;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    -moz-box-shadow:    0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    box-shadow:         0px 0px 18px 0px rgba(48, 50, 50, 0.48);
+    border-radius: 2%;
+  }
 .btn-info{
   background-color: #DF691A;
   border-color: #DF691A;
@@ -136,7 +145,16 @@ color: white;
   width: 100%;
   height: auto;
 }
-
+.form_title h1{
+text-align: center;
+box-sizing: border-box;
+color: #4C565E;
+font-size: 24px;
+padding: 0px 0px 12px;
+margin-left: 0;
+margin-right: 0;
+border-bottom: 2px solid #6CAEE0;
+}
 .navbar-default .navbar-toggle{
   border-color: #009CFF !important;
 }

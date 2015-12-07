@@ -81,7 +81,7 @@
             </a>
           <%end%>
       </div>
-<div class="social">
+<div style="margin-top:5px" class="social">
 <div class="row">
   <div class="col-md-2" style="position:absolute;">
     <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
@@ -117,40 +117,46 @@
                 <p><i class="fa fa-usd"></i>PRECIO RESERVA: <%=@apartment.reservePrice%> (USD)</p>
               </div>
             </div>
-            <div>
+            
+
+          </div>
+          </div>
+          <div class="room-ammenties">
+          <div class="col-md-2 col-sm-2">
             <h4 class="custom-head">Extras</h4>
-            <p>
+          </div>
+          <p>
               <div class="hotel-ammeties">
                                   <% if @apartment.wifi == true %>
-                                    <i class="fa fa-wifi" style="color:green" title="Wifi"></i>
+                                    Wifi <i class="fa fa-wifi" style="color:green" title="Wifi"></i> |
                                   <%end%>
                                   <% if @apartment.tv == true %>
-                                    <i class="fa fa-television" style="color:green" title="Televisión"></i>
-                                  <%end%>
-                                  <% if @apartment.radio == true %>
-                                    <i class="fa fa-headphones" style="color:green" title="Radio"></i>
+                                    T.V. <i class="fa fa-television" style="color:green" title="Televisión"></i> |
                                   <%end%>
                                   <% if @apartment.tvcable == true %>
-                                    <i class="fa fa-rss-square" style="color:green" title="Televisió Satelital"></i>
+                                    T.V. Cable<i class="fa fa-rss-square" style="color:green" title="Televisió Satelital"></i> |
+                                  <%end%>
+                                  <% if @apartment.radio == true %>
+                                    Radio <i class="fa fa-headphones" style="color:green" title="Radio"></i> |
                                   <%end%>
                                   <% if @apartment.parking == true %>
-                                    <i class="fa fa-car" style="color:green" title="Estacionamiento"></i>
+                                    | Estacionamiento <i class="fa fa-car" style="color:green" title="Estacionamiento"></i> |
                                   <%end%>
+                </div>
                   </p>
-            </div>
-          </div>
-          </div>
+          
           
         </div>
-        <div class="hr-seperator"></div>
+        
         <div class="hotel-room-desc">
           <div class="col-md-2 col-sm-2">
             <h4 class="custom-head">Descripción</h4>
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
-            <h5><%= @apartment.description%> </h5>
+            <h4><%= @apartment.description%> </h4>
           </div>
         </div>
+        <div class="hr-seperator"></div>
 
       </div>  
       <div class="col-md-4 hotel-detail-sidebar">
@@ -209,7 +215,7 @@
         <div class="col-md-12 hotel-room-desc">
           <div class="col-md-2 col-sm-2">
             <h4 class="custom-head">Ubicación</h4>
-            <h3><%=@apartment.address%></h3>            
+            <h4><%=@apartment.address%></h4>            
           </div>
           <div class="col-md-10 col-sm-10 hotel-room-detail">
             <div id="map" style='width: 100%; height: 300px;'></div>
@@ -225,33 +231,30 @@
   </script>
           </div>
         </div>
-    </div>
+ 
+
+<div class="col-md-12 hotel-room-desc">
+  <div class="col-md-2 col-sm-2">
+              <h4 class="custom-head">Comentarios</h4>            
+            </div>
+  <div class="col-md-10 col-sm-10 hotel-room-detail">
+      <ul class="list-group">
+        <%@apartment.comments.each do |comment| %>
+        <li class="list-group-item">
+          <%=comment.body%><br><br>  <i>Publicado por: @<%=comment.user.name%><br>Fecha: <%=comment.updated_at%></i>
+          <%if can? :edit, comment %>
+             <td><%= link_to 'EDITAR', edit_comment_path(comment),class:"btn btn-warning" %></td> 
+             <td><%= link_to 'ELIMINAR',comment, method: :delete, data: { confirm: 'Estás seguro?'},class:"btn btn-danger" %></td>
+  <br><br>
+          <%end%>
+        </li>
+        <% end %>
+      </ul>
+      <%=  render "comments/form" %>
   </div>
-
-  
-<div class="container well formborderApartment">
-  
-    
-    <%=  render "comments/form" %>
-
-    <ul>
-
-      <%@apartment.comments.each do |comment| %>
-      <li>
-        <%=comment.body%><br> PUBLICADO POR: @<%=comment.user.name%> / FECHA: <%=comment.updated_at%>
-
-        <%if can? :edit, comment %>
-
-          - <td><%= link_to 'EDITAR', edit_comment_path(comment) %></td> 
-          - <td><%= link_to 'ELIMINAR',comment, method: :delete, data: { confirm: 'Estás seguro?'} %></td>
-
-        <%end%>
-
-      </li>
-      <% end %>
-    </ul>
-
 </div>
+   </div>
+  </div>
 
   <!-- START: SIMILAR ROOMS -->
   <div class="row similar-room">
@@ -334,3 +337,10 @@ $('#simule_cant').change(function(){
   $('#simule_total').html("Total: $"+$(this).val()*pernightPrice + " (USD)<br><h6>No incluye precio reserva</h6>");
 });
  </script>
+ <style>
+#comment_body{
+  height: 100px;
+  max-width: 100%;
+  min-width: 100%;
+}
+</style>
