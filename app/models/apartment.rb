@@ -4,6 +4,7 @@ class Apartment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
   	has_many :pictures, :dependent => :destroy
+  	has_many :comments
   	has_many :payments, :dependent => :destroy
   	validates :title, :address, presence: true
   	validates :description, presence: true, length: {minimum:20}

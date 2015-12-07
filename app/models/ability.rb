@@ -20,9 +20,21 @@ class Ability
             end
         can :create, Apartment
 
+        can :update, Comment do |comment|
+            comment.user == user
+            end
+
         #can :index, Apartment
         #can :show, Apartment
     end
+        else
+
+            can :update, Comment do |comment|
+            comment.user == user
+            end
+
+        
+
     
 
     # Define abilities for the passed in user here. For example:

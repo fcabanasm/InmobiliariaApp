@@ -15,6 +15,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1.json
   def show
     @apartment.update_visits_count
+    @comment = Comment.new
     @hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
@@ -38,6 +39,7 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = current_user.apartments.new(apartment_params)
+
     respond_to do |format|
       if @apartment.save
         if params[:images]

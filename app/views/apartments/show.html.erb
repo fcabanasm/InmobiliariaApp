@@ -228,6 +228,31 @@
     </div>
   </div>
 
+  
+<div class="container well formborderApartment">
+  
+    
+    <%=  render "comments/form" %>
+
+    <ul>
+
+      <%@apartment.comments.each do |comment| %>
+      <li>
+        <%=comment.body%><br> PUBLICADO POR: @<%=comment.user.name%> / FECHA: <%=comment.updated_at%>
+
+        <%if can? :edit, comment %>
+
+          - <td><%= link_to 'EDITAR', edit_comment_path(comment) %></td> 
+          - <td><%= link_to 'ELIMINAR',comment, method: :delete, data: { confirm: 'Estás seguro?'} %></td>
+
+        <%end%>
+
+      </li>
+      <% end %>
+    </ul>
+
+</div>
+
   <!-- START: SIMILAR ROOMS -->
   <div class="row similar-room">
     <div class="container clear-padding">

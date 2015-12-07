@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get "/shop", to: "payments#shop"
   get "payments/express"
   get "transactions/checkout"
@@ -8,7 +9,11 @@ Rails.application.routes.draw do
   
   resources :pictures
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :apartments
+  
+  resources :comments
+  resources :apartments do
+    resources :comments
+  end
   devise_for :users, controllers:{registrations: "registrations"}
   resources :users, only: [:show, :index]
 
