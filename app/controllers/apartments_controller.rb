@@ -38,7 +38,6 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = current_user.apartments.new(apartment_params)
-
     respond_to do |format|
       if @apartment.save
         if params[:images]

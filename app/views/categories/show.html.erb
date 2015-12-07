@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="row page-title">
+        <div class="container clear-padding text-center flight-title">
+            <h3>Propiedades</h3>
+            <h4 class="thank">Explora L@s <%=@category.name%> disponibles</h4>
+        </div>
+    </div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @category.name %>
-</p>
+
+    
 
 <%= link_to 'Editar', edit_category_path(@category) %> |
 <%= link_to 'Volver', categories_path %>

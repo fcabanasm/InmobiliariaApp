@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #before_filter :configure_permitted_parameters, if: :devise_controller?
   #before_action :configure_permitted_parameters
-
+  before_action :set_categories
 
 #	protected
 #		def configure_permitted_parameters
@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     redirect_to root_path unless user_signed_in? && current_user.admin?
+  end
+
+  private
+
+  def set_categories
+    @categories=Category.all
   end
 
 end
