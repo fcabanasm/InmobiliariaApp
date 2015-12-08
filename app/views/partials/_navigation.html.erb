@@ -13,8 +13,8 @@
           </div>
 <div class="col-md-6 col-xs-7 clear-padding user-logged">
   <%if user_signed_in?%>
-      <%=link_to current_user.name, edit_user_registration_path(current_user)%> <i class="fa fa-user"></i>      
-      <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %> <i class="fa fa-sign-out"></i>
+      <%=link_to current_user.name, edit_user_registration_path(current_user)%> <i class="fa fa-user" style="color:white"></i>      
+      <%= link_to "Cerrar Sessión",destroy_user_session_path,method: :delete %> <i class="fa fa-sign-out" style="color:white"></i>
   <%else%>
       <%= link_to "Ingresar", new_user_session_path %> <i class="fa fa-sign-in"></i>
 

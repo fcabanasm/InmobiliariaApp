@@ -46,11 +46,10 @@
                             </div>
                             <div class="hotel-rating">
                                 <div class="pull-left">
-                                    <img src="assets/images/tripadvisor.png" alt="cruise"><span>4.5/5</span>
+                                    <%= apartment.visits_count%> visitas
                                 </div>
                                 <div class="pull-right">
-                                    <i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star colored"></i><i class="fa fa-star"></i><br>
-                                    <span>128 Guest Reviews</span>
+                                    <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
