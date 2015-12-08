@@ -57,11 +57,15 @@
                 <% @apartment.pictures.each do |pic| %>
                   <%if pic == @apartment.pictures.first%>
                     <div class="active item">
+                    <div class="cropApartmentShow">
                       <%= image_tag pic.image.url, class:"img-responsive" %>
+                      </div>
                     </div>
                   <%else%>
                     <div class="item">
+                    <div class="cropApartmentShow">
                       <%= image_tag pic.image.url, class:"img-responsive" %>
+                      </div>
                     </div>
                   <% end %>
                 <% end %>
@@ -83,13 +87,10 @@
       </div>
 <div style="margin-top:6px" class="social">
 <div class="row">
-  <div class="col-md-2" style="position:absolute;">
-    <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
-  </div>
   <div class="col-md-2 pull-right">
-  <div class="fb-share-button" data-href="<%=request.fullpath%>" data-layout="button"></div>
+  <div style="margin-left:6px" class="fb-share-button" data-href="<%=request.fullpath%>" data-layout="button"></div>
   </div>
-  <div style="margin-right:10px" class="col-md-1 pull-right">
+  <div style="margin-right:6px" class="col-md-1 pull-right">
   <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="<%=request.fullpath%>" data-via="LaSerenaFun" data-related="LaSerenaFun" data-hashtags="LaSerenaFun">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </div>
@@ -287,12 +288,11 @@
               <p><i class="fa fa-road"></i> <%=@apartment.distance_from([a.latitude,a.longitude]).round(2)%> (KM)</p>
             </div>
             <div class="post-desc">
-              <p><%=a.description%></p>
+              <p><%= truncate(a.description,length:50) %></p>
             </div>
             <div class="room-book">
-              <div class="col-md-8 col-sm-4 col-xs-4 clear-padding post-alt">
-                <h5><%= a.visits_count%> visitas</h5>
-                <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
+              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding">
+                <h5><%= a.pernightPrice %> USD/Noche</h5>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
                 <a href="#" class="text-center"><%=link_to "Ver",a%></a> 

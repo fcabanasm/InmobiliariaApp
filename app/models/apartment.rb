@@ -7,7 +7,7 @@ class Apartment < ActiveRecord::Base
   	has_many :comments
   	has_many :payments, :dependent => :destroy
   	validates :title, :address, presence: true
-  	validates :description, presence: true, length: {minimum:20}
+  	validates :description, presence: true, length: {minimum:50}
  	accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['trip_image'].nil? }
   	validates :latitude, :presence => {message: "Lo sentimos, pero la dirección ingresada no es valida para Google Maps" }
 	validates :category, presence: true

@@ -15,7 +15,7 @@
             <div class="clearfix"></div>
             <!-- END: HOTEL GRID VIEW -->
             <!-- START: PAGINATION -->
-<%= will_paginate @apartments, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @apartments.publicados_sinArrrendar.ultimos, renderer: BootstrapPagination::Rails %>
             <!-- END: PAGINATION -->
         </div>
         <!-- END: INDIVIDUAL LISTING AREA -->

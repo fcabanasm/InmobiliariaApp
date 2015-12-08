@@ -42,14 +42,14 @@
                                 </div>
                             </div>
                             <div class="room-desc">
-                                <p><%= truncate(apartment.description,length:300) %></p>
+                                <p><%= truncate(apartment.description,length:50) %></p>
                             </div>
                             <div class="hotel-rating">
                                 <div class="pull-left">
                                     <%= apartment.visits_count%> visitas
                                 </div>
                                 <div class="pull-right">
-                                    <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
+                                    
                                 </div>
                             </div>
                             <div class="clearfix"></div>

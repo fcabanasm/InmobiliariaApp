@@ -25,40 +25,11 @@
     <%= f.text_area :description %>
   </div>
 
- <div class="form-group">
-    <%= f.label :pictures, "Fotos", :class => 'control-label' %>
-
-    <div id="" class="owl-carousel">
-      <div class="thumbnail carousel" id="target"></div>
-      <div class="thumbnail carousel" id="target"></div>
-      <div class="thumbnail carousel" id="target"></div>
+  <div class="form-group">
+    <%= f.label :pictures, :class => 'control-label' %>
+    <div class="controls">
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
     </div>
-    <script>
-    $(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    dots: false,
-    loop: true,
-    responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 2
-          },
-          1000: {
-            items: 3
-          }
-    }
-  });
-});
-
-    </script>
-      
-      <%= file_field_tag "images[]", type: :file, id: "pictureInput" %>
-      <div class="img_place"></div>
-      <label for="add_img">Añadir más imagenes</label>
-      <span><i id="add_img" style="cursor:pointer" class="fa fa-plus fa-2x"></i> 
-      </span>
   </div>
 
   <div class="form-group">

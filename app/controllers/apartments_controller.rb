@@ -31,8 +31,8 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1/edit
   def edit
     @apartment = Apartment.find(params[:id])
-    #3.times { @apartment.pictures.build } # ... and this
     @apartment.update(state: "unpublished_unrented")
+    5.times { @apartment.pictures.build } # ... and this
   end
 
   # POST /apartments
