@@ -57,17 +57,17 @@
                 <% @apartment.pictures.each do |pic| %>
                   <%if pic == @apartment.pictures.first%>
                     <div class="active item">
-                      <%= image_tag pic.image.url, class:"apartment-carousel" %>
+                      <%= image_tag pic.image.url, class:"img-responsive" %>
                     </div>
                   <%else%>
                     <div class="item">
-                      <%= image_tag pic.image.url, class:"apartment-carousel" %>
+                      <%= image_tag pic.image.url, class:"img-responsive" %>
                     </div>
                   <% end %>
                 <% end %>
             <%else%>
               <div class="active item">
-                <%= image_tag("sinfoto.jpg", :alt => "No tiene foto", class:"apartment-carousel") %>
+                <%= image_tag("sinfoto.jpg", :alt => "No tiene foto", class:"img-responsive") %>
               </div>
             <%end%>
           </div>
@@ -140,7 +140,7 @@
                                     Radio <i class="fa fa-headphones" style="color:green" title="Radio"></i> |
                                   <%end%>
                                   <% if @apartment.parking == true %>
-                                    | Estacionamiento <i class="fa fa-car" style="color:green" title="Estacionamiento"></i> |
+                                    Estacionamiento <i class="fa fa-car" style="color:green" title="Estacionamiento"></i> |
                                   <%end%>
                 </div>
                   </p>
@@ -264,7 +264,7 @@
         <!-- START: HOTEL GRID VIEW -->
         <%contador=0%><!--Propiedades que cumplen con las condiciones-->
         <div id="owl-demo">
-        <%Apartment.publicados_sinArrrendar.each do |a|%>
+        <%Apartment.publicados_sinArrrendar.ultimos.each do |a|%>
         <%if a.geocoded?%>
         <%unless a.address==@apartment.address%>
         <%if @apartment.distance_from([a.latitude,a.longitude]) < 10%>
@@ -272,11 +272,11 @@
         <div class="room-grid-view wow slideInUp">
         <%if a.pictures.empty? %>
           <div class="crop">
-            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto") %>
+            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto", class:"img-responsive") %>
           </div>
         <%else%>
           <div class="crop">
-            <%= image_tag a.pictures.first.image.url %>
+            <%= image_tag a.pictures.first.image.url, class:"img-responsive" %>
           </div>
         <%end%>
           <div class="room-info">
@@ -308,14 +308,33 @@
         <%if contador == 0%>
     <h4>Lo sentimos, recorrimos 10 kilometros alrededor de esta propiedad y no encontramos ninguna <i class="fa fa-thumbs-down"></i></h4>
   <%end%>
-       <script>
+<script>
     $(document).ready(function() {
       $("#owl-demo").owlCarousel({
           autoPlay: 3000, //Set AutoPlay to 3 seconds
-          items : 3,
-          itemsDesktop : [1199,3],
-          itemsDesktopSmall : [979,3],
-          loop: true
+          loop: true,
+          magin: 10,
+          dots: false,
+          navText: [
+                    "<i class='fa fa-arrow-left'></i>",
+                    "<i class='fa fa-arrow-right'></i>"
+                ],
+          responsiveClass:false,
+          responsive:{
+              0:{
+                  items:1,
+                  nav:true
+              },
+              600:{
+                  items:3,
+                  nav:false
+              },
+              1000:{
+                  items:3,
+                  nav:true,
+                  loop:false
+              }
+          }
       });
     });
 </script> 
@@ -340,6 +359,7 @@ $('#simule_cant').change(function(){
  <style>
 #comment_body{
   height: 100px;
+  max-height: 200px;
   max-width: 100%;
   min-width: 100%;
 }

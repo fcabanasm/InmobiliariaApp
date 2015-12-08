@@ -93,12 +93,12 @@
         <div class="room-grid-view wow slideInUp">
           <%if a.pictures.empty? %>
           <div class="crop">
-            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto") %>
-          </div>
+            <%= image_tag("sinfoto.jpg", :alt => "No tiene foto", class:"img-responsive") %>
+</div>
         <%else%>
-          <div class="crop">
-            <%= image_tag a.pictures.first.image.url %>
-          </div>
+<div class="crop">
+            <%= image_tag a.pictures.first.image.url, class:"img-responsive" %>
+</div>
         <%end%>
           <div class="room-info">
             <div class="post-title">
@@ -146,19 +146,38 @@
             <div class="clearfix"></div>
           </div>
         </div>
-        <%break if stop > 4%>
+        <%break if stop > 5%>
         <%stop += 1%>
         <%end%>
         
       </div>   <!--FIN OWL-->
-       <script>
+<script>
     $(document).ready(function() {
       $("#owl-demo").owlCarousel({
           autoPlay: 3000, //Set AutoPlay to 3 seconds
-          items : 3,
-          itemsDesktop : [1199,3],
-          itemsDesktopSmall : [979,3],
-          loop: true
+          loop: true,
+          magin: 10,
+          dots: false,
+          navText: [
+                    "<i class='fa fa-arrow-left'></i>",
+                    "<i class='fa fa-arrow-right'></i>"
+                ],
+          responsiveClass:false,
+          responsive:{
+              0:{
+                  items:1,
+                  nav:true
+              },
+              600:{
+                  items:3,
+                  nav:false
+              },
+              1000:{
+                  items:3,
+                  nav:true,
+                  loop:false
+              }
+          }
       });
     });
 </script> 
