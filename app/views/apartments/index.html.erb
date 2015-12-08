@@ -11,7 +11,7 @@
         <!-- START: INDIVIDUAL LISTING AREA -->
         <div class="hotel-listing text-center">
             <!-- START: HOTEL GRID VIEW -->
-            <%= render @apartments %>
+            <%= render @apartments.publicados_sinArrrendar.ultimos %>
             <div class="clearfix"></div>
             <!-- END: HOTEL GRID VIEW -->
             <!-- START: PAGINATION -->

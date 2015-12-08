@@ -4,9 +4,22 @@
             <h4 class="thank">Explora L@s <%= @category.name %> Disponibles</h4>
         </div>
     </div>
+    <!-- END: PAGE TITLE -->
+<!-- START: LISTING AREA-->
+<div class="row">
+    <div class="container clear-padding">
+        <!-- START: INDIVIDUAL LISTING AREA -->
+        <div class="hotel-listing text-center">
+            <!-- START: HOTEL GRID VIEW -->
+            <%= render @category.apartments.publicados_sinArrrendar.ultimos %>
+            <div class="clearfix"></div>
+            <!-- END: HOTEL GRID VIEW -->
+            <!-- START: PAGINATION -->
 
-<div style="margin-top:4px">
-	<%= link_to 'Volver', categories_path, class:"btn btn-info"%>
+            <!-- END: PAGINATION -->
+        </div>
+        <!-- END: INDIVIDUAL LISTING AREA -->
+    </div>
 </div>
 
 </div>

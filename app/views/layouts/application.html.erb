@@ -48,7 +48,9 @@
         <%=link_to "INICIO", root_path%>
         <%=link_to "ARRIENDOS", apartments_path%>
         <a href="/contact/index" style="upercase">CONTACTO</a>
+        <% if not user_signed_in?%>
         <%= link_to "INGRESAR", new_user_session_path %>
+        <%end%>
       </p>
       <p class="copyright">
         &copy;  La Serena Fun 2015 | Todos los derechos reservados

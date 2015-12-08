@@ -290,8 +290,9 @@
               <p><%=a.description%></p>
             </div>
             <div class="room-book">
-              <div class="col-md-8 col-sm-6 col-xs-6 clear-padding post-alt">
-                <h5><i class="fa fa-comments"></i> 2 <i class="fa fa-share-alt"></i> 20 </h5>
+              <div class="col-md-8 col-sm-4 col-xs-4 clear-padding post-alt">
+                <h5><%= a.visits_count%> visitas</h5>
+                <div class="fb-like" data-layout="button" data-href="<%=request.fullpath%>" data-show-faces="true"></div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-6 clear-padding">
                 <a href="#" class="text-center"><%=link_to "Ver",a%></a> 
