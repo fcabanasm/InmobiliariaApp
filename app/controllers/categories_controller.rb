@@ -55,11 +55,21 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category.destroy
-    respond_to do |format|
+
+    if @category.destroyed?
+
+      respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Categoria eliminada.' }
       format.json { head :no_content }
+      end
+    else
+        respond_to do |format|
+        format.html { redirect_to categories_url, notice: 'La categoria no se puede elimminar, exiten propiedades que aun pertenecen a esta categoria. Por favor cambie la categoria de estas propiedades. ' }
+        format.json { head :no_content }
+      end
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
