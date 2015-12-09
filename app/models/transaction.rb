@@ -10,8 +10,10 @@ class Transaction < ActiveRecord::Base
   	self.save
   	if response.success?
   		self.user.payments.each do |payment|
+        if payment.state == 1
+          payment.apartment.update(state: "unpublished_rented")
+        end
   			payment.update(state: 2)
-        payment.apartment.update(state: "unpublished_rented")
   		end
   		true
   	else

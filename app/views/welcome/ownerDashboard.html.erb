@@ -16,8 +16,15 @@
                 </div>
             </div>
             <div class="top-space text-center margin-sup">
-                <% if z.may_ownerUnRent? %>
-                <%= link_to "Fin Arriendo", "/apartments/#{z.id}/ownerUnRent", class:"btn btn-danger", method: :put%>
+                <%if z.may_ownerUnRent?%>
+                    <%= link_to "Fin Arriendo", "/apartments/#{z.id}/ownerUnRent", class:"btn btn-warning", method: :put%>
+                <%else%>
+                    <%if z.state=="published_unrented"%>
+                        <h4 style="color:green">Publicado</h4>
+                    <%end%>
+                    <%if z.state=="unpublished_unrented"%>
+                        <h4 style="color:red">No Publicado</h4>
+                    <%end%>
                 <%end%>
             </div>
             </div>
