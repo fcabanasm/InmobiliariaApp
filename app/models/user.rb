@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
-validates :rut, rut: true
+validates :rut, rut: true, uniqueness: {case_sensitive: false ,message: "ya existe"}
+validates_format_of :rut,
+                      :with => /\A(\d{1,3})\.(\d{3})\.(\d{3})\-(k|\d{1})\Z/i,
+                      :message => "Formato no Valido EJ: 12.345.678-k"
 validates :address, presence: true
 validates :phone_number, presence: true, numericality: true
 

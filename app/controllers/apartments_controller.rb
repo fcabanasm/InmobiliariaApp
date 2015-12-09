@@ -32,7 +32,7 @@ class ApartmentsController < ApplicationController
   def edit
     @apartment = Apartment.find(params[:id])
     @apartment.update(state: "unpublished_unrented")
-    5.times { @apartment.pictures.build } # ... and this
+    #5.times { @apartment.pictures.build } # ... and this
   end
 
   # POST /apartments
@@ -62,6 +62,15 @@ class ApartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @apartment.update(apartment_params)
+        if params[:images]
+          # The magic is here ;)
+          params[:images].each { |image|
+            if (image!=nil)
+              @apartment.pictures.create(image: image)
+            
+            end
+          }
+        end
         format.html { redirect_to @apartment, notice: 'La propiedad se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @apartment }
       else

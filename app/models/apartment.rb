@@ -15,7 +15,7 @@ class Apartment < ActiveRecord::Base
   	before_validation :geocode, :if => :address_changed?        # auto-fetch coordinates
 	validates :bathrooms,presence: true, :numericality => {:greater_than_or_equal_to => 1} 
 	validates :rooms,presence: true, :numericality => {:greater_than_or_equal_to => 1} 
-	validates :pernightPrice,presence: true, :numericality => {:greater_than_or_equal_to => 10} 
+	validates :pernightPrice,presence: true, :numericality => {:greater_than_or_equal_to => 15} 
 	validates :reservePrice,presence: true, :numericality => {:greater_than_or_equal_to => 10}
 	before_save :set_visits_count
 	

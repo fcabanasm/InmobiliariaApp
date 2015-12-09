@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def account_update_params
-		allow = [:email, :name, :address, :phone_number,:rut, :password, :password_confirmation, :current_password]
+		allow = [:email, :name, :address,:owner, :phone_number,:rut, :password, :password_confirmation, :current_password]
 		params.require(resource_name).permit(allow)
 	end
 end
